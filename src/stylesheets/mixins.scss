@@ -1,1 +1,44 @@
-// mixins 
+// mixins
+@mixin NoStyle {
+  border: none;
+  background: none;
+  outline: none;
+}
+
+@mixin Flex-Jcenter-Acenter($Flex-Direction:row) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: $Flex-Direction;
+}
+
+@mixin Flex-Acenter {
+  display: flex;
+  align-items: center;
+}
+
+@mixin Flex-Jcenter {
+  display: flex;
+  justify-content: center;
+}
+
+@mixin Flex-Column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin Flex-JC($JC-Value) {
+  display: flex;
+  justify-content: $JC-Value;
+}
+
+@mixin Flex-AC($AC-Value) {
+  display: flex;
+  align-items: $AC-Value;
+}
+
+@mixin Flex-Acenter-J($J-value) {
+  display: flex;
+  justify-content: $J-value;
+  align-items: center;
+}
