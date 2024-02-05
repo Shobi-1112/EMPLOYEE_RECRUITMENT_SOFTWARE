@@ -1,53 +1,48 @@
-.tableHeading{
-    display: flex;
-    margin-top: 5%;
-    width: 80%;
-    gap: 13.1rem;
-    padding: 1%;
-}
-.tableContaier{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-table{
-     width: 100%;
-     text-align: center;
-}
-th{
-    border-bottom: 1px black solid;
-    transform: scaleX(1.1);
-    height: 4rem;
-}
-.Action{
-    display: flex;
-    justify-content: center;
-    justify-content: space-evenly;
-}
-tr{
-    height: 4rem;
-}
-.changepage{
-    display: flex;
-    //  gap: 10%;   
-     list-style-type: none;   
-}
-    a{
-        text-decoration: none;
-        color:gray;
+@import "../../stylesheets/index.scss";
+
+.TableStyle {
+  @include Flex-Jcenter-Acenter(column);
+  width: 100%;
+  a {
+    text-decoration: none;
+  }
+  table {
+    min-width: 60%;
+    max-width: 85%;
+    width: 100%;
+    border-collapse: collapse;
+
+    th:first-child,
+    td:first-child {
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;
     }
-.listofbuttons{
-    display: flex;
-   
-    width: 3rem;
-    height: 2rem;
-    align-items: center;
-    justify-content: center;
-   
-}
-.pagechangeContainer{
-    position:absolute;
-    top: 90%;
-}
+    th:last-child,
+    td:last-child {
+      border-top-right-radius: 8px;
+      border-bottom-right-radius: 8px;
+    }
 
+    th {
+      background-color: $Black;
+      color: $White;
+      height: 3rem;
+    }
 
+    tbody {
+      tr {
+        &:nth-child(even) {
+          background-color: #f9f9f9;
+        }
+
+        &:hover {
+          background-color: #e7e6e6;
+        }
+      }
+      td {
+        text-align: center;
+        padding: 1.4rem 0;
+      }
+    }
+  }
+}

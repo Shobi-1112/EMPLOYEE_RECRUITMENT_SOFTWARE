@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React ,{useState} from "react";
 import "./App.css";
-import CodingTest from "./components/CodingTest/CodingTest";
-import QuestionPage from "./components/QuestionPage/QuestionPage";
-import Piechart from "./components/Piechart/Piechart";
+import CodingTest from "./components/CodingTest";
+import Piechart from "./components/Piechart";
+// import AdminRouter from "./routers/AdminRouter";
+
 
 function App() {
 
@@ -25,11 +26,17 @@ function App() {
 
   return(
     <div>
-      {/* <CodingTest/> */}
-      <QuestionPage />
+      <CodingTest/>
+      
      {/* <Piechart chartData={chartData}/> */}
     </div>
   )
+  // return (
+  //   <div className="App">
+  //     <AdminRouter />
+  //     {/* <Landingpage /> */}
+  //   </div>
+  // );
 }
 
 export default App;
