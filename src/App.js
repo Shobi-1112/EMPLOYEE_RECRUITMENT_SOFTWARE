@@ -7,6 +7,9 @@ import Resetpassword from "./components/ResetPassword/ResetPassword.jsx";
 import QuestionSet from "./components/Questionset/QuestionSet.jsx";
 import QuestionBar from "./components/Questionbar/QuestionBar.jsx";
 // import CountDown from "./components/Countdown/CountDown.jsx"
+import AdminRouter from "./routers/AdminRouter";
+// import Landingpage from "./pages/LandingPage";
+
 function App() {
   return (
     <Router>
@@ -19,8 +22,9 @@ function App() {
           <Route path="/question-set" element={<QuestionSet />} />
           <Route path="/question-bar" element={<QuestionBar />} />
           {/* <Route path="/count-down" element={<CountDown />} /> */}
-
         </Routes>
+        <AdminRouter />
+        {/* <Landingpage /> */}
       </div>
     </Router>
   );
