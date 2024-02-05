@@ -1,0 +1,43 @@
+.progress-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 18rem;
+  margin: 20px auto;
+  // border: 1px solid red;
+  height: 6rem;
+}
+
+.button {
+  width: 50px;
+  position: relative;
+  height: 50px;
+  border-radius: 50%;
+  background-color: green;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: #005600;
+}
+
+.progress-bar-container {
+  width: calc(100% - 120px);
+  width: 12.5rem;
+  height: 8px;
+  background-color: #ddd;
+  // border-radius: 10px;
+  position: relative;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: green;
+  border-radius: 10px;
+  transition: width 0.3s;
+}
