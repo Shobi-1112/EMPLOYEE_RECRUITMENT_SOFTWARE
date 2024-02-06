@@ -1,0 +1,138 @@
+.codingContainer{
+ display: flex;
+ gap: 1%;
+
+ .position{
+    width: 18%;
+    height: 98vh;
+    .leftQuestionNumber{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 15%;
+        background-color: #E8E9F2;
+        height: max-content;
+        position: fixed;
+        height: 98vh;
+        .sidenumber{
+            display: flex;
+            gap: 5%;
+            // margin-left: 3rem;
+            justify-content: center;
+            width:fit-content;
+        }
+        .sideHeading{
+            margin-top: 4rem;
+            padding: 4%;
+        
+        }
+        .questionNumbers{
+            display: flex;
+            justify-content: center;
+            background-color:#C5CAE9;
+            width: 2rem;
+            height: 2rem;
+            align-items: center;
+        }        
+      }
+}
+
+.TestPage{
+  background-color:#C5CAE9;
+  display: flex;
+  width: 100%;
+  height:max-content;
+  .QuestionDisplay{
+    padding: 4%;
+    width: 40%;
+    height: 89vh;
+}
+.Compailer{
+    background-color:#C5CAE9;
+    width: 60%;
+    padding: 1%;
+
+    .languageSelection{
+        // margin-top: 10%;
+        width: 30%;
+        height: 100%;
+        background-color: #C5CAE9;
+        border: none;
+        align-items: center;
+        font-size: 1rem;
+        
+    }
+    .language{
+        display: flex;
+        gap:10%;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        font-size: 100%;
+    }
+    .compailerText{
+        width: 99%;
+        height: 88vh;
+    }
+    .screen{
+        width: 5rem;
+        height: 2.5rem;
+        font-size: 1rem;
+    }
+    .optionsChange{
+        width: 100%;
+        background-color:#E8E9F2;
+        color:blue ;
+        height: 3%;
+        padding: 1%;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        
+    }
+
+.RunButton{
+    display: flex;
+    gap: 10%;
+    .compileButtons{
+        width: 7rem;
+        height: 2rem;
+        margin-top: 5%;
+        background-color: rgb(22, 88, 230);
+        color: white;
+
+    }
+    .submitButtons{
+        width: 7rem;
+        height: 2rem;
+        margin-top: 5%;
+        background-color: rgb(94, 143, 94);
+        color: white;
+
+    }
+}
+.OutputVerification{
+    display: flex;
+    flex-direction: column;
+    table{
+        width: 100%;
+        text-align: center;
+        background-color:#E8E9F2 ;
+        th{
+        width: 20%;
+        padding: 2%;
+        }
+        td{
+            padding: 2%;
+        }
+    }
+}
+
+}
+}
+
+}
+td{
+    // background-color:rgb(175, 210, 188);
+    // background-color: rgb(216, 161, 161);
+}
