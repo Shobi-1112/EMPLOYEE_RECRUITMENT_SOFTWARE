@@ -19,6 +19,7 @@ const InputTag = (props) => {
         className={className}
         type={type}
         onClick={onClick}
+        
       />
 
       {Process && <p>{Process}</p>}
