@@ -1,9 +1,9 @@
 import React ,{useState} from "react";
 import "./App.css";
-import CodingTest from "./components/CodingTest";
-import Piechart from "./components/Piechart";
+// import CodingTest from "./components/CodingTest";
+// import Piechart from "./components/Piechart";
 // import AdminRouter from "./routers/AdminRouter";
-
+import Bulkdata from "./components/Bulkdata";
 
 function App() {
 
@@ -26,7 +26,8 @@ function App() {
 
   return(
     <div>
-      <CodingTest/>
+      {/* <CodingTest/> */}
+      <Bulkdata/>
       
      {/* <Piechart chartData={chartData}/> */}
     </div>
