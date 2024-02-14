@@ -1,21 +1,9 @@
-.switchbox {
-  height: 3rem;
-  min-width: 10rem;
-  max-width: fit-content;
-  margin-top: 2rem;
-  gap: 26%;
-  margin-left: 4rem;
-  display: flex;
-  justify-content: space-evenly;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 2rem;
-  color: #757575;
-}
-.switch-item {
-  cursor: pointer;
-}
+$Primary: #20bb20;
 
-.switch-item.active {
-  color: green;
-  border-bottom: 4px green solid;
+.switchbox {
+  display: flex;
+  margin-left: 6px;
+  margin-top: 20px;
+  gap: 2rem;
+  font-family: Arial, Helvetica, sans-serif;
 }

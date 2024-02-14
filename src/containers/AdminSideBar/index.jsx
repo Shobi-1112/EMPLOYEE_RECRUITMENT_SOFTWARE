@@ -17,6 +17,7 @@ function SideBar({ className }) {
 
   const adminAccessAction = () => {
     alert("button is been pressed !");
+
     setAccountAction(!accountAction);
   };
 
@@ -37,7 +38,6 @@ function SideBar({ className }) {
     <div className={"SideBar " + className}>
       <div className="sideBarNavigationSection">
         <img src={assets.Logo} alt="Divum" />
-
         <div className="SideBarNavigationIconSection">
           {SideBarNavigation.map(({ image, text, path }, NaviIndex) => {
             return (

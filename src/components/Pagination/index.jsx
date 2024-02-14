@@ -54,9 +54,7 @@ const Pagination = ({ totalItems, itemsPerPage, onPageChange }) => {
         disabled={activePage === 1}
         text="&lsaquo;"
       />
-
       {pageNumbers}
-
       <Button
         className="page-arrow"
         onClick={handleNextClick}

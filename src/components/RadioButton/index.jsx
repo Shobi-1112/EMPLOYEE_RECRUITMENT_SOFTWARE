@@ -1,30 +1,27 @@
-import "./Input.scss"
+import "./RadioButton.scss"
 
-const InputTag = (props) => {
+const RadioTag = (props) => {
   const {
-    placeholder,
     name,
     value,
-    type,
     onChange,
     onClick,
     className,
     lable
   } = props;
   return (
-    <div className="common-input">
-    <label>{lable}</label>
+    <div className="common-RadioTag">
       <input
         name={name}
-        placeholder={placeholder}
         onChange={onChange}
         value={value}
         className={className}
-        type={type}
+        type="radio"
         onClick={onClick}    
-      />
+        />
+        <label>{lable}</label>
     
     </div>
   );
 };
-export default InputTag;
+export default RadioTag;

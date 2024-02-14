@@ -7,7 +7,6 @@ function PasswordEncry() {
   const seckey = 'key'
   const change = () => {
     const newpass = encrypt(password, seckey)
-    console.log(newpass)
   }
   return (
     <div>

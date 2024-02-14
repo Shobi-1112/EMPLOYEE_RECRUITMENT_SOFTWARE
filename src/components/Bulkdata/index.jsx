@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import Input from "../InputTag/index"
 import Button from "../Button/index"
 import axios from 'axios';
-import Popup from "../Popup/index"
 import "../Bulkdata/Bulkdata.scss"
 import excel from "../../assets/exel.png" 
-function Bulkdata() {
+import { BiCloudUpload } from "react-icons/bi";
+function Bulkdata({classname}) {
     const [file,setFile]=useState();
     const [img,setImg]=useState(null)
     const formdata=async()=>{
@@ -23,21 +23,21 @@ function Bulkdata() {
     const handleFileChange = (event) => {
         const selectedFile = event.target.files;
         setFile(selectedFile);
-        setImg();
+        setImg(excel);
     }
 
-
-    
   return (
-
-    <Popup trigger={true}>
+    <div className={classname}>
+      <h1>ATTACH FILE</h1>
         <div className='uploadContainer'>
-            {}
-            <img src={excel}/>
-      <Input type={"file"} onChange={(data)=>handleFileChange(data)}/>
+            {img?<img src={img} alt="bulkdata" className='fileimg'/>:<BiCloudUpload  className='uploadicons' />}
+      <Input type={"file"} onChange={(data)=>handleFileChange(data)} className={"fileupload"} />
+      <p style={{color:"gray"}}>Upload only .xlsx file</p>
         </div>
-        <Button onClick={()=>formdata()} text={"upload"}></Button>
-    </Popup>
+        <div className='uploadbuttonContainer'>
+        <Button onClick={()=>formdata()} text={"Upload"} className={"uploadbutton"}></Button>
+          </div>
+      </div>
     
   )
 }
