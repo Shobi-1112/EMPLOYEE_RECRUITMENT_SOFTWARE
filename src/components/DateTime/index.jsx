@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./dateTime.scss";
-const DateTimePicker = () => {
+const DateTime = () => {
   const [dateTime, setDateTime] = useState({ date: "", time: "" });
 
   const handleDateTimeChange = (event) => {
@@ -28,4 +28,4 @@ const DateTimePicker = () => {
   );
 };
 
-export default DateTimePicker;
+export default DateTime;

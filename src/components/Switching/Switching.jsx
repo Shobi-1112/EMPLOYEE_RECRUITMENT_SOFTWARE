@@ -1,39 +1,29 @@
 import React, { useState } from "react";
-import Page1 from "../FirstPage/FirstPage";
-import Page2 from "../SecondPage/SecondPage";
 import "./Switching.scss";
-import NotificationSlideBar from "../NotificationSlider/NotificationSlideBar.jsx";
 
-const Switching = () => {
-  const [activeSwitch, setActiveSwitch] = useState("reschedule");
+const Switching = ({ Arrayofvalue, clickinfo }) => {
+  const [headingvalue, setHeadingvalue] = useState(Arrayofvalue[0]);
 
-  const handleSwitchChange = (switchValue) => {
-    setActiveSwitch(switchValue);
+  const handleCheck = (value) => {
+    setHeadingvalue(value);
+    clickinfo(value);
   };
-  
+
   return (
-    <>
-      <div className="switchbox">
-        <NotificationSlideBar />
+    <div className="switchbox">
+      {Arrayofvalue.map((f) => (
         <div
-          className={`firstswitch ${
-            activeSwitch === "reschedule" ? "active" : ""
-          }`}
-          onClick={() => handleSwitchChange("reschedule")}
+          className={headingvalue === f ? "switch-item active" : "switch-item"}
+          onClick={() => {
+            handleCheck(f);
+          }}
+          key={f}
+          style={{width: "110%"}}
         >
-          Reschedule
+          <p style={{textAlign: "center"}}>{f}</p>
         </div>
-        <div
-          className={`secondswitch ${
-            activeSwitch === "rescheduleAssign" ? "active" : ""
-          }`}
-          onClick={() => handleSwitchChange("rescheduleAssign")}
-        >
-          Reschedule Assign
-        </div>
-      </div>
-      {activeSwitch === "reschedule" ? <Page1 /> : <Page2 />}
-    </>
+      ))}
+    </div>
   );
 };
 

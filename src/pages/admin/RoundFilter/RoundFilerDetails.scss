@@ -1,0 +1,78 @@
+@import "../../../stylesheets/index.scss";
+
+.RoundFilerDetails {
+    padding: 1rem;
+  .RoundFilerDetailsTopContainer {
+    display: flex;
+    gap: 8%;
+    .RoundFilerDetailsTopContent {
+      p {
+        margin: 0.3rem 0.5rem;
+        width: 18rem;
+        display: flex;
+        align-items: center;
+        text-align: start;
+        font-size: 1.5rem;
+      }
+      span {
+        margin: 0.5rem 1rem;
+      }
+    }
+    .RoundFilerDetailsTopContentRight {
+      width: 20rem;
+      font-size: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 6%;
+
+      Button {
+        @include NoStyle;
+        width: 4.5rem;
+        height: 2rem;
+        border-radius: 7px;
+        font-size: 1rem;
+        color: white;
+        background-color: blue;
+      }
+      .RoundFilterRadioButtons {
+        display: flex;
+        gap: 10%;
+        padding: 0.3rem;
+        margin-bottom: 0.3rem;
+        label {
+          padding: 0.3rem;
+        }
+      }
+      .RoundFilterInputField {
+        display: flex;
+        gap: 5%;
+        input {
+          padding: 0.5rem;
+          font-size: 1rem;
+          margin-bottom: 1rem;
+        }
+        Button {
+          @include NoStyle;
+          width: 2rem;
+          height: 2rem;
+          border-radius: 7px;
+          font-size: 2rem;
+          color: white;
+          margin-top: 0.2rem;
+        }
+        .plus {
+          background-color: blue;
+        }
+        .minus {
+          background-color: gray;
+        }
+      }
+    }
+  }
+  .tableContainer {
+    // border: 1px solid red;
+    h1{
+        margin-bottom: 1rem;
+    }
+  }
+}

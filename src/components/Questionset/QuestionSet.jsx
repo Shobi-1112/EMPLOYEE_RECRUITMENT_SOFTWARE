@@ -1,5 +1,5 @@
 import React from "react";
-import "/home/divum/hiring_platform/hiring-platform-frontend/src/components/Questionset/QuestionSet.scss";
+import "./QuestionSet.scss";
 
 function QuestionSet() {
   const questionAnswerData = [

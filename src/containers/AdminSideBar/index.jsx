@@ -5,10 +5,10 @@ import Button from "../../components/Button";
 import { SideBarNavigation } from "../../helpers/sidebarList";
 import { MdAccountCircle } from "react-icons/md";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
-import { IoPower } from "react-icons/io5";
 import { NavLink } from "react-router-dom";
+import { FiLogOut } from "react-icons/fi";
 
-function SideBar() {
+function SideBar({ className }) {
   const [accountAction, setAccountAction] = useState(false);
 
   const handleAccountClick = () => {
@@ -20,13 +20,26 @@ function SideBar() {
     setAccountAction(!accountAction);
   };
 
+  const data = [
+    {
+      text: "admin@gmail.com",
+      icon: <MdAccountCircle />,
+    },
+    {
+      text: "Change Password",
+    },
+    {
+      text: "Logout",
+      icon: <FiLogOut />,
+    },
+  ];
   return (
-    <div className="SideBar">
+    <div className={"SideBar " + className}>
       <div className="sideBarNavigationSection">
         <img src={assets.Logo} alt="Divum" />
 
         <div className="SideBarNavigationIconSection">
-          {SideBarNavigation.map(({ image, text,path }, NaviIndex) => {
+          {SideBarNavigation.map(({ image, text, path }, NaviIndex) => {
             return (
               <NavLink to={path} className="navigationButton" key={NaviIndex}>
                 {image}
@@ -39,30 +52,19 @@ function SideBar() {
       <div className="AccountInfo" onClick={handleAccountClick}>
         {accountAction && (
           <div className="AccountActionSection">
-            <Button
-              text="admin@gmail.com"
-              icon={<MdAccountCircle />}
-              className="adminAccountAction"
-              onClick={() => {
-                adminAccessAction();
-              }}
-            />
-
-            <Button
-              text="Change Password"
-              className="adminAccountAction"
-              onClick={() => {
-                adminAccessAction();
-              }}
-            />
-            <Button
-              text="Logout"
-              icon={<IoPower />}
-              className="adminAccountAction"
-              onClick={() => {
-                adminAccessAction();
-              }}
-            />
+            {data.map(({ text, icon }, dataIndex) => {
+              return (
+                <Button
+                  text={text}
+                  icon={icon}
+                  className="adminAccountAction"
+                  onClick={() => {
+                    adminAccessAction();
+                  }}
+                  index={dataIndex}
+                />
+              );
+            })}
           </div>
         )}
         <MdAccountCircle />

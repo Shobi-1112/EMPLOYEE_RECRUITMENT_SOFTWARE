@@ -1,26 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Pagination.scss";
 import Button from "../Button/index";
 
-const Pagination = ({ totalPages }) => {
+const Pagination = ({ totalItems, itemsPerPage, onPageChange }) => {
   const [activePage, setActivePage] = useState(1);
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
+
+  useEffect(() => {
+    setActivePage(1);
+  }, [totalItems, itemsPerPage]);
 
   const handlePageClick = (pageNum) => {
     setActivePage(pageNum);
+    onPageChange(pageNum);
   };
 
   const handlePrevClick = () => {
-    if (activePage > 1) {
-      setActivePage(activePage - 1);
+    const prevPage = activePage - 1;
+    if (prevPage >= 1) {
+      setActivePage(prevPage);
+      onPageChange(prevPage);
     }
   };
 
   const handleNextClick = () => {
-    if (activePage < totalPages) {
-      setActivePage(activePage + 1);
+    const nextPage = activePage + 1;
+    if (nextPage <= totalPages) {
+      setActivePage(nextPage);
+      onPageChange(nextPage);
     }
   };
 
+  if (totalPages <= 1) {
+    return null; 
+  }
   const pageNumbers = [];
   for (let i = 1; i <= totalPages; i++) {
     pageNumbers.push(

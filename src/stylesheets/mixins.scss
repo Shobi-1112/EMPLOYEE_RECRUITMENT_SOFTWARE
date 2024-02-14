@@ -5,16 +5,17 @@
   outline: none;
 }
 
-@mixin Flex-Jcenter-Acenter($Flex-Direction:row) {
+@mixin Flex-Jcenter-Acenter($Flex-Direction: row) {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: $Flex-Direction;
 }
 
-@mixin Flex-Acenter {
+@mixin Flex-Acenter ($FD-value:row){
   display: flex;
   align-items: center;
+  flex-direction: $FD-value;
 }
 
 @mixin Flex-Jcenter {
@@ -41,4 +42,9 @@
   display: flex;
   justify-content: $J-value;
   align-items: center;
+}
+@mixin Flex-Jcenter-A($A-value) {
+  display: flex;
+  justify-content: center;
+  align-items: $A-value;
 }

@@ -1,0 +1,17 @@
+@import "../stylesheets/index.scss";
+
+.Layout {
+  width: 100%;
+  display: flex;
+
+  .Sidebar {
+    position: sticky;
+    top: 0;
+  }
+
+  .Outlet {
+    width: 82%;
+    margin-bottom: 2.207rem;
+    overflow: auto;
+  }
+}

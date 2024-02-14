@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Navbar.scss"; 
-import logo from "/home/divum/hiring_platform/hiring-platform-frontend/src/assets/Divum LOGO 2022.svg";
+import assets from "../../assets";
 import { BsPersonCircle } from "react-icons/bs";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { FiLogOut } from "react-icons/fi";
@@ -20,7 +20,7 @@ const Navbar = () => {
     <div className="navbar">
       <div className="navcontent">
         <div>
-          <img className="logoimg" src={logo} alt="/" />
+          <img className="logoimg" src={assets.Logo} alt="/" />
         </div>
         <div className="Heading">DIVUM HIRING PLATFORM</div>
         <div className="profile">

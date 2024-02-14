@@ -1,0 +1,59 @@
+@import "../../../stylesheets/index.scss";
+
+.AddQuestion {
+  display: flex;
+  flex-direction: column;
+
+  .switching {
+    display: flex;
+    top: 2rem;
+  }
+  .addQuestionTopContainer {
+    padding: 0 2rem;
+    height: 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    .addQuestionTopContainerLeft {
+      display: flex;
+      align-items: flex-end;
+    }
+    .addNewButton {
+      @include NoStyle;
+      height: 2.5rem;
+      width: 5.5rem;
+      background-color: rgb(36, 182, 36);
+      color: $White;
+      font-size: 1rem;
+      font-weight: 550;
+      border-radius: 8px;
+      margin-right: 5rem;
+    }
+  }
+
+  .addQuestionTableContainer {
+    height: fit-content;
+    margin-top: 0.6rem;
+    padding-top: 0.6rem;
+    Table {
+      .ButtonIcon {
+        @include NoStyle;
+        height: 2rem;
+        width: 2rem;
+        font-size: 1rem;
+        margin: 0.5rem;
+        border-radius: 8px;
+        color: white;
+        cursor: pointer;
+      }
+      .Edit {
+        background-color: blue;
+      }
+
+      .Delete {
+        background-color: rgb(240, 52, 52);
+      }
+    }
+  }
+}

@@ -1,13 +1,12 @@
 @import "../../stylesheets/index.scss";
 
 .TableStyle {
-  @include Flex-Jcenter-Acenter(column);
-  width: 100%;
+  @include Flex-Acenter(column);
   a {
     text-decoration: none;
   }
   table {
-    min-width: 60%;
+    min-width: 70%;
     max-width: 85%;
     width: 100%;
     border-collapse: collapse;
@@ -24,7 +23,7 @@
     }
 
     th {
-      background-color: $Black;
+      background-color: rgb(54, 54, 54);
       color: $White;
       height: 3rem;
     }
@@ -40,8 +39,13 @@
         }
       }
       td {
+        max-width: 20rem; 
         text-align: center;
-        padding: 1.4rem 0;
+        padding: 1.1rem 2.5rem;
+        list-style-type: none;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
     }
   }

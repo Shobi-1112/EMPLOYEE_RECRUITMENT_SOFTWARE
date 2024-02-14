@@ -7,6 +7,7 @@ const assets = {
   MACHINE_LEARNING: require("./machine learning.png"),
   PYTHON: require("./python.png"),
   REACT: require("./react.png"),
+  doneIcon: require("./doneicon.png"),
 };
 
 export default assets;
