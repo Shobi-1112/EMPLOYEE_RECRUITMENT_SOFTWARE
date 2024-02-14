@@ -4,6 +4,7 @@ import SideBar from "../containers/AdminSideBar";
 import { Outlet, useNavigate } from "react-router-dom";
 
 const Layout = () => {
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -25,7 +26,12 @@ const Layout = () => {
         <Outlet />
       </div>
     </div>
+
   );
+
 };
 
+
+
 export default Layout;
+

@@ -26,7 +26,7 @@ const ChartComponent = ({ chartData, type="doughnut" }) => {
   return (
     <div style={{width:"10rem"}} className='maindiv'>
         <p className='percentage'>80%</p>
-      <canvas ref={chartRef} />
+      <canvas ref={chartRef}/>
     </div>
   );
 };

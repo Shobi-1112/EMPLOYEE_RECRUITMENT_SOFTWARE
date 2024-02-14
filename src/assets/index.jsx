@@ -8,6 +8,7 @@ const assets = {
   PYTHON: require("./python.png"),
   REACT: require("./react.png"),
   doneIcon: require("./doneicon.png"),
+  noResults: require("./Noresult.png")
 };
 
 export default assets;

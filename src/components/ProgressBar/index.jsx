@@ -1,34 +1,30 @@
-import React, { useState } from 'react';
-import './progressBar.scss'; // Import CSS file for styling
+import React, { useState, useEffect } from 'react'
+import "../ProgressBar/progressBar.scss"
+import { IoMdCheckmark } from "react-icons/io";
 
-const ProgressBarComponent = () => {
-  const [progress, setProgress] = useState(0);
+const Progressbar = ({ className="", actives, select }) => {
+  const count = [1, 2, 3, 4]
+  const [active, setActive] = useState(1)
 
-  const handleButtonClick = (value) => {
-    if (value === '1') {
-      decreaseProgressBar();
-    } else if (value === '2') {
-      increaseProgressBar();
-    }
-  };
-
-  const increaseProgressBar = () => {
-    setProgress(100);
-  };
-
-  const decreaseProgressBar = () => {
-    setProgress(0);
-  };
+  useEffect(() => {
+    setActive(actives);
+  }, [actives]);
 
   return (
-    <div className="progress-container">
-      <button className="button" onClick={() => handleButtonClick('1')}>1</button>
-      <div className="progress-bar-container">
-        <div className="progress-bar" style={{ width: `${progress}%` }}></div>
+      <div className={`holeProgressContainer ${className}`} >
+        {count.map((f, index) => (
+          <div className='ProgressContainer' key={index}>
+            <div className='circleValue' style={{ background: active >= index || index === select ? "#1FA72A" : "lightgray" }} >
+              {active >= index ? <IoMdCheckmark style={{ color: "white" }} /> : f}
+            </div>
+            {count.length > f &&
+              <div className='circleLine' style={{ background: active >= index ? "#1FA72A" : "lightgray" }}>
+              </div>
+            }
+          </div>
+        ))}
       </div>
-      <button className="button" onClick={() => handleButtonClick('2')}>2</button>
-    </div>
-  );
-};
+  )
+}
 
-export default ProgressBarComponent;
+export default Progressbar
