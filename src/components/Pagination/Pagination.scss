@@ -5,14 +5,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 20px;
+  margin : .2rem;
 
   a {
     text-decoration: none;
   }
 
   .page-num {
-    // display: inline-block;
     padding: 8px 14px;
     border: 1px solid #ddd;
     border-radius: 4px;

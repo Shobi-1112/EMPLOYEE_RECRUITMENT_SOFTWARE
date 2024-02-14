@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FiEyeOff, FiEye, FiMail, FiKey } from 'react-icons/fi';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import "/home/divum/hiring_platform/hiring-platform-frontend/src/components/Loginpage/LoginPage.scss";
+import "./LoginPage.scss";
 
 function App() {
   const [formData, setFormData] = useState({

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "/home/divum/hiring_platform/hiring-platform-frontend/src/components/Questionbar/QuestionBar.scss";
+import "./QuestionBar.scss";
 
 function QuestionBar() {
     const [markedAnswers, setMarkedAnswers] = useState(Array(15).fill(false));
