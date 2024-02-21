@@ -1,4 +1,3 @@
-// mixins
 @mixin NoStyle {
   border: none;
   background: none;
@@ -42,6 +41,12 @@
   display: flex;
   justify-content: $J-value;
   align-items: center;
+}
+@mixin Flex-Aleft($FD-value:row)
+{
+  display: flex;
+  flex-direction: $FD-value;
+  align-items: left;
 }
 @mixin Flex-Jcenter-A($A-value) {
   display: flex;

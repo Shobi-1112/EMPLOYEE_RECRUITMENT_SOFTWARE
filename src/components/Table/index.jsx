@@ -1,11 +1,19 @@
 import React, { useState } from "react";
-import "./Table.scss";
+import "../Table/Table.scss";
 import Pagination from "../Pagination";
 import Button from "../Button";
 import { MdDelete, MdModeEdit } from "react-icons/md";
 import Popup from "../Popup";
 
-const Table = ({ data="", isEditable, isDeletable, onEdit, onDelete }) => {
+const Table = ({
+  data = "",
+  isEditable,
+  isDeletable,
+  onEdit,
+  onDelete,
+  className,
+  isPopupUp
+}) => {
   const [showPopup, setShowPopup] = useState(false);
   const [selectedRow, setSelectedRow] = useState({});
   const [currentPage, setCurrentPage] = useState(1);

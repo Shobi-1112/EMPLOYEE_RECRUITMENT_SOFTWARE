@@ -8,10 +8,13 @@ import Progressbar from "../../../components/ProgressBar";
 import Button from "../../../components/Button";
 import "./CreateContest.scss"
 
+
 const CreateContest = () => {
   const [progress, setProgress] = useState(-1);
   const [select, setSelect] = useState(0);
-
+  const [totalrounds,setTotalrounds]=useState()
+  const [MainContestinfo,setMainContestinfo]=useState([])
+  const arrayvalue=JSON.parse(localStorage.getItem("array"));
   const handleNext = () => {
     setProgress(progress + 1);
     setSelect(select + 1);
@@ -21,6 +24,10 @@ const CreateContest = () => {
     setSelect(select - 1);
   };
 
+  const Hrvalue=(value)=>{
+   setMainContestinfo([...arrayvalue,...value])
+  }
+  console.log(MainContestinfo,"value")
   return (
     <div style={{ width: "100%" }} className="createContainer">
       <h1 style={{ background: "rgb(245, 243, 243)", paddingLeft:"2rem",paddingTop:"1rem" }}>
@@ -34,9 +41,9 @@ const CreateContest = () => {
         />
       </div>
       {progress === -1 ? (
-        <AddMCQandCoding />
+        <AddMCQandCoding setTotalrounds={setTotalrounds} />
       ) : progress === 0 ? (
-        <HRassign />
+        <HRassign totalrounds={totalrounds} Hrvalue={Hrvalue}/>
       ) : (
         <AddContestants />
       )}

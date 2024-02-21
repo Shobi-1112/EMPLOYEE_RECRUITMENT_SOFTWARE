@@ -7,20 +7,31 @@ const ManualUpload = () => {
   const [addCounter, setAddCounter] = useState(1); 
   const [removelement,setRemovelement]=useState()
   const [constinfo,setConstinfo]=useState([])
+  const [removecollege,setRemovecollege]=useState()
   const handleAddClick = () => {
     setAddCounter(addCounter + 1);   
   };
     
-   const contestinfo=(value)=>{
-    setConstinfo([...constinfo,...value])
-   }
+  const contestinfo = (value) => {
+    value.forEach((newValue) => {
+      const existingIndex = constinfo.findIndex(item => item.name === newValue.name || item.email === newValue.email);
+      if (existingIndex !== -1) {
+        const updatedConstinfo = [...constinfo];
+        updatedConstinfo[existingIndex] = { ...updatedConstinfo[existingIndex], ...newValue };
+        setConstinfo(updatedConstinfo);
+      } else {
+        setConstinfo(prevConstinfo => [...prevConstinfo, newValue]);
+      }
+    });
+  };
 
-   const removedetail=(value)=>{
+   const removedetail=(value,collegename)=>{
     setAddCounter(addCounter-1)
     setRemovelement(value)
-    console.log(value)
+    setRemovecollege(collegename)
   }
   
+  console.log(constinfo,"info")
    
   return (
     <div className='manualuploadcontainer'>

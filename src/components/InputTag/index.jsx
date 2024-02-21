@@ -9,11 +9,15 @@ const InputTag = (props) => {
     onChange,
     onClick,
     className,
-    lable
+    label,
+    checkboxHeading
   } = props;
+
+ 
+
   return (
     <div className="common-input">
-    <label>{lable}</label>
+    <label>{label}</label>
       <input
         name={name}
         placeholder={placeholder}
@@ -23,8 +27,9 @@ const InputTag = (props) => {
         type={type}
         onClick={onClick}    
       />
-    
+      <label style={{marginLeft:"1rem"}}>{checkboxHeading}</label>
     </div>
   );
 };
+
 export default InputTag;
