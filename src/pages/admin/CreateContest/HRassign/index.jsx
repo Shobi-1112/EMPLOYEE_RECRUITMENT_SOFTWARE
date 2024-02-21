@@ -1,17 +1,24 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from '../../../../components/Button';
 import "./HRassign.scss";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import RadioTag from '../../../../components/RadioButton';
 
-const HRassign = () => {
-  const [containervalue, setContainervalue] = useState([]);
+const HRassign = ({totalrounds,Hrvalue}) => {
+  const [containervalue, setContainervalue] = useState(() => {
+    const storedValue = localStorage.getItem('containervalue');
+    return storedValue ? JSON.parse(storedValue) : [];
+  });
+  useEffect(() => {
+    localStorage.setItem('containervalue', JSON.stringify(containervalue));
+  }, [containervalue]);
+
   const [radivalue, setRadiovalue] = useState("")
-  const [length, setLength] = useState(2);
+  const [length, setLength] = useState(totalrounds+1);
   const radioHeading=["Technical HR","Personal HR"]
 
-  const handleAddRound = (process) => {
-    const newRound = { round: `Round ${length + 1}`, process };
+  const handleAddRound = (roundType) => {
+    const newRound = { roundNumber: `Round ${length + 1}`, roundType };
     setContainervalue([...containervalue, newRound]);
     setLength(length + 1)
   };
@@ -22,7 +29,9 @@ const HRassign = () => {
     setContainervalue(newRounds);
     setLength(length - 1)
   };
-
+ useEffect(()=>{
+   Hrvalue(containervalue)
+ },[containervalue])
   return (
     <div className='Hraddcontainer'>
       <h1 className='headings'>Add HR Round </h1>
@@ -33,10 +42,10 @@ const HRassign = () => {
         ))}
       </div>
       {containervalue.map((round, index) => (
-        <div className='RoundisplayContainer'>
+        <div className='RoundisplayContainer' key={index}>
           <div key={index} className='roundinfo'>
-            <h2 style={{color:"#543cc7"}}>{round.round}</h2>
-            <p>{round.process}</p>
+            <h2 style={{color:"#543cc7"}}>{round.roundNumber}</h2>
+            <p>{round.roundType}</p>
           </div>
           <RiDeleteBin5Line className='dustbin' onClick={() => handleDeleteRound(index)} />
         </div>

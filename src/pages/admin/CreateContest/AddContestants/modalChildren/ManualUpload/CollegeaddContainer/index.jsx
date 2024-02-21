@@ -13,9 +13,10 @@ const CollegeAddConatiner = ({ className, addcontestdetail,index,removevalue }) 
   }, []);
 
   const handleAddEmailContainer = () => {
-    setEmailContainers([...emailContainers, { email: '', name: '', college: collegenames }]);
+    setEmailContainers([...emailContainers, { email: '', name: '', college:'' }]);
 
   };
+  // console.log(emailContainers)
 
   const handleRemoveEmailContainer = (index) => {
     setEmailContainers(emailContainers.filter((_, idx) => idx !== index));
@@ -24,13 +25,14 @@ const CollegeAddConatiner = ({ className, addcontestdetail,index,removevalue }) 
   const handleEmailChange = (index, field, value) => {
     const updatedContainers = [...emailContainers];
     updatedContainers[index][field] = value;
+    updatedContainers[index]["college"] =collegenames;
     setEmailContainers(updatedContainers);
   };
 
   return (
     <div className={className}>
-      <RxCross2 style={{ float: "right",display:index>0?"block":"none" }} onClick={()=>{removevalue(index)}}  />
-      <InputTag type={"text"} lable={"College Name"} className={"collegename"} placeholder={"Enter College Name"}  onChange={(e) => setCollegenames(e.target.value)} />
+      <RxCross2 style={{ float: "right",display:index>0?"block":"none" }} onClick={()=>{removevalue(index,collegenames)}}  />
+      <InputTag type={"text"} label={"College Name"} className={"collegename"} placeholder={"Enter College Name"}  onChange={(e) => setCollegenames(e.target.value)} />
       {emailContainers.map((container, index) => (
         <div className='emailidCard' key={index}>
           <div>
