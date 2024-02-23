@@ -11,7 +11,7 @@
   flex-direction: $Flex-Direction;
 }
 
-@mixin Flex-Acenter ($FD-value:row){
+@mixin Flex-Acenter($FD-value: row) {
   display: flex;
   align-items: center;
   flex-direction: $FD-value;
@@ -52,4 +52,26 @@
   display: flex;
   justify-content: center;
   align-items: $A-value;
+}
+
+@mixin flex-column-gap($gap) {
+  display: flex;
+  flex-direction: column;
+  row-gap: $gap;
+}
+@mixin flex-row($alignItems, $justifyContent) {
+  display: flex;
+  align-items: $alignItems;
+  justify-content: $justifyContent;
+}
+@mixin flex-column-align-gap($alignItems, $gap) {
+  display: flex;
+  flex-direction: column;
+  align-items: $alignItems;
+  gap: $gap;
+}
+@mixin flex-row-center($gap, $alignItems) {
+  display: flex;
+  gap: $gap;
+  align-items: $alignItems;
 }
