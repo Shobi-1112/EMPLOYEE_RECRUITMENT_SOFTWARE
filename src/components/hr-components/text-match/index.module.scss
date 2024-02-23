@@ -1,0 +1,32 @@
+@import '../../../stylesheets/mixins.scss';
+@import '../../../stylesheets/variable.scss';
+
+%text-match {
+  & p:first-child {
+    font-size: large;
+    color: $darkGrey;
+  }
+  & .assign {
+    color: $Green-Button;
+  }
+  & .pending {
+    color: $red;
+  }
+  & .values {
+    color: $lightGrey;
+  }
+}
+.content_box {
+  @include flex-column-align-gap(center, 1rem);
+  @extend %text-match;
+}
+
+.row {
+  @include flex-row-center(0.5rem, center);
+  @extend %text-match;
+  gap: 0.5rem;
+}
+
+.start {
+  @include flex-column-align-gap(flex-start, 0.5rem);
+}
