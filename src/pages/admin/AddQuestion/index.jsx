@@ -13,7 +13,7 @@ const AddQuestion = () => {
 
   return (
     <div className="AddQuestion">
-      <Switching Arrayofvalue={arrayData} clickinfo={click} />
+      <Switching Arrayofvalue={arrayData} clickinfo={click} renderContent={setClickvalue}/>
       {clickvalue === "MCQ" ? <McqAddQuestion /> : <CodingAddQuestion />}
     </div>
   );

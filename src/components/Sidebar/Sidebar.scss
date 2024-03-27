@@ -39,8 +39,8 @@ $Sidebar: #E8E9F2;
     &-content {
     
       display: none;
-      position: absolute;
-      top: 3.125rem; // 50px / 16
+      position: fixed;
+      top: 3.125rem; 
       background-color: $Secondary;
       min-width: 23.875rem; // 350px / 16
       box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); // 0 0.5rem 1rem rgba(0, 0, 0, 0.2) / 16

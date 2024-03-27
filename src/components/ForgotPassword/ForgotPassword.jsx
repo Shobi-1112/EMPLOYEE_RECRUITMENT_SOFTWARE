@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./ForgotPassword.scss";
 import { FiMail } from "react-icons/fi";
 import assets from "../../assets";
+import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 const Forgetpassword = () => {
   const [email, setEmail] = useState("");
@@ -25,7 +26,24 @@ const Forgetpassword = () => {
   const handleBackToLogin = () => {
     window.location.href = "/";
   };
-
+  const handlePassword = async () => {
+    try {
+      const data = {
+        email
+      };
+      const response = await axios.post(
+        `http://192.168.1.20:8081/api/v1/employee/password-reset/email/${email}`,
+        data,
+        { params: { method: 'FORGET_PASSWORD' } }
+      );
+      console.log(response);
+      toast.success("Mail sent successfully", 200);
+      window.location.href = "/";
+    } catch (error) {
+      console.error("Error resetting password:", error);
+    }
+  };
+  
   return (
     <div className="Forgetpasswordbox">
       <ToastContainer className="toast-message" closeButton={false} />
@@ -44,7 +62,7 @@ const Forgetpassword = () => {
         />
       </div>
       {emailError && <p className="error-message">{emailError}</p>}
-      <button className="continuebutton" onClick={handleContinue}>
+      <button className="continuebutton" onClick={handlePassword}>
         CONTINUE
       </button>
       <h1 className="backtologin" onClick={handleBackToLogin}>

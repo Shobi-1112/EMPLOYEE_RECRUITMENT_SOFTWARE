@@ -1,25 +1,30 @@
 import React, { useState } from "react";
 import "../Switching/Switching.scss";
 
-const Switching = ({ Arrayofvalue, children,renderContent,className }) => {
-  const [selectedOption, setSelectedOption] = useState(Arrayofvalue[0]);
+const Switching = ({
+  Arrayofvalue,
+  children,
+  renderContent,
+  className,
+  click,
+}) => {
+  const [selectedOption, setSelectedOption] = useState("MCQ");
 
   const handleCheck = (value) => {
     setSelectedOption(value);
     renderContent(value);
+    sessionStorage.setItem("value",value)
   };
-  
 
   return (
     <>
-      <div className="switchbox">
+      <div className={"switchbox " + className}>
         {Arrayofvalue.map((f) => (
           <div
             key={f}
             style={{
-              borderBottom:
-                selectedOption === f ? "4px green solid" : "none",
-              cursor: "pointer"
+              borderBottom: selectedOption === f ? "4px green solid" : "none",
+              cursor: "pointer",
             }}
             onClick={() => {
               handleCheck(f);
@@ -30,7 +35,7 @@ const Switching = ({ Arrayofvalue, children,renderContent,className }) => {
           </div>
         ))}
       </div>
-      {children && children[selectedOption]} 
+      {children && children[selectedOption]}
     </>
   );
 };
