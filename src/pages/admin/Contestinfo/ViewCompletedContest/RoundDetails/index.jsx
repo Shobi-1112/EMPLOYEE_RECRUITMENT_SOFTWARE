@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import ChartComponent from '../../../../../components/Piechart'
 import "../RoundDetails/RoundDetails.scss"
 import Button from '../../../../../components/Button';
-const RoundDetails = ({ resultbutton, roundNo, roundDetails }) => {
+const RoundDetails = ({ resultbutton, roundDetails }) => {
   if (!roundDetails || !roundDetails.partWiseMarkAllocations) {
     return null;
   }
@@ -10,8 +10,6 @@ const RoundDetails = ({ resultbutton, roundNo, roundDetails }) => {
   const [charttData, setCharttData] = useState({})
   // console.log(roundDetails)
   useEffect(() => {
-
-
     const labels = roundDetails?.partWiseMarkAllocations?.map((round) => round?.part);
     const allocatedTime = roundDetails?.partWiseMarkAllocations?.map((round) => round?.allocatedTime);
     const d = roundDetails?.partWiseMarkAllocations?.map((round) =>

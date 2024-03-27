@@ -28,13 +28,13 @@ const Table = ({
     return null;
   }
   const [showPopup, setShowPopup] = useState(false);
-  const [selectedRow, setSelectedRow] = useState();
+  const [selectedRow, setSelectedRow] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
   const [sortBy, setSortBy] = useState(null);
   const [sortAsc, setSortAsc] = useState(true);
   const itemsPerPage = 8;
   const navigate = useNavigate()
-  const handleClickRow = async (rowData) => {
+  const handleClickRow =  (rowData) => {
     setSelectedRow(rowData);
     setShowPopup(!showPopup);
     document.body.style.overflow = 'hidden';

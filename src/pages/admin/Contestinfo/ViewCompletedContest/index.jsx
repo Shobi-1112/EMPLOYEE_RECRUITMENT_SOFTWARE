@@ -10,8 +10,8 @@ import { useLocation } from "react-router";
 
 const ViewCompleted = () => {
   const location = useLocation();
-  const result = location?.state?.contestData;
-  const contestId = location?.state?.contestId;
+  // const result = location?.state?.contestData;
+  // const contestId = location?.state?.contestId;
   
   const roundNumbers = Roundshow1.map((round) => round.Roundno);
   const roundTypes = Roundshow1.map((round) => round.roundType);

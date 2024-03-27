@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import Table from '../../../../components/Table'
 import "../CompleteContest/CompleteContest.scss"
 import Viewbarchart from '../PopupChartdetails'
 import InputTag from '../../../../components/InputTag'
@@ -14,11 +13,7 @@ import ContestinfoTable from '../../../../components/ContestinfoTable'
 const CompleteContest = ({round,participant, roundDetails, tableinfo, isview, isDelete, isEdit, heading, className, RoutingLink, searchtag, contestIds }) => {
   const [clickdata, setClickdata] = useState()
   const [popupclick, setPopupclick] = useState(false);
-  // useEffect(() => {
-
-  //   setPopupclick(!!clickdata); 
-  // }, [clickdata]);
-  // console.log(clickdata)
+  
   const [searchQuery, setSearchQuery] = useState("")
   const [filteredContests, setFilteredContests] = useState(tableinfo);
   

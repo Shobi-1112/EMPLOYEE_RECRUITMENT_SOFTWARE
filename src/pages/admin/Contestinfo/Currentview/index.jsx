@@ -14,19 +14,9 @@ const Currentview = () => {
   const location = useLocation();
   const result = location?.state?.contestData;
   const contestIds = location?.state?.contestId;
-
-  // const roundNumbers = Roundshow1.map((round) => round.Roundno);
   const roundTypes = result?.roundLists?.map((round) => round.roundType);
   const roundName = result?.roundLists?.map((round) => round.round);
-  // const roundNumbers = result?.roundLists?.map((e, index) => index + 1)
-  // const [current, setCurrent] = useState("Round 1");
-  // const [pagesindex, setpagesindex] = useState(0);
-  // const pagechanges = (page) => {
-  //   setCurrent(page);
-  //   const pageNumber = page.replace(/\D/g, '');
-  //   setpagesindex(pageNumber)
-  // console.log(pageNumber);
-  // };
+
 
   const [pages, setPages] = useState("Round 1");
   const [pagesindex, setpagesindex] = useState(0);
@@ -41,27 +31,6 @@ const Currentview = () => {
     setRoundId(result.roundLists[index].roundId);
   };
 
-  // const fetchRoundData = async () => {
-  //   try {
-  //     let round;
-  //     if (stateSwitch === "Contest Details" && pages !== "Final Result") {
-  //       round = await fetchRoundApi(contestIds, roundId);
-  //     } else if (stateSwitch === "Contest Details") {
-  //       round = await fetchFinalRoundApi(contestIds, roundId);
-  //     } else {
-  //       round = await partcipantsRoundApi(contestIds);
-  //       round = round.map(({ name, email, collegeName }, index) => ({
-  //         No: index + 1,
-  //         Name: name,
-  //         Email: email,
-  //         "College Name": collegeName,
-  //       }));
-  //     }
-  //     setRoundDetails(round);
-  //   } catch (err) {
-  //     console.log("Error in fetching data", err);
-  //   }
-  // };
   const fetchRoundData = async () => {
     if (stateSwitch === "Contest Details") {
       if (pages !== "Final Result") {
@@ -132,14 +101,8 @@ const Currentview = () => {
               <span>Participant count</span> : {result.participantCount}
             </p>
           </div>
-          {/* {roundTypes.map((f, index) => (
-            f === "test" ?
-              <RoundDetails resultbutton={true} roundNo={index + 1} /> :
-               <CompleteContest heading={`Round ${index + 1} :`} tableinfo={round3} className={"roundinfo"} />
-          ))} */}
           <div className="viewCompletetogglebutton">
             <DynamicToggle
-              // switchStates={roundNumbers.map((round) => `Round ${round}`)}
               switchStates={roundName}
               page={pages}
               handleToggle={pagechanges}
