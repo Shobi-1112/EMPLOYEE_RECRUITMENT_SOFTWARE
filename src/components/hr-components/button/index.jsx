@@ -5,8 +5,14 @@ const Button = ({ text, icon, type, onClickFunction }) => {
   let nameOfClass =
     type === 'danger'
       ? 'button_component_red'
-      : type === 'safe'
+      : type === 'success'
       ? 'button_component_green'
+      : type === 'safe'
+      ? 'button_component_yellow'
+      : type === 'icon'
+      ? 'button_component_icon'
+      : type === 'success_status'
+      ? 'button_component_green_static'
       : 'button_component';
   return (
     <button

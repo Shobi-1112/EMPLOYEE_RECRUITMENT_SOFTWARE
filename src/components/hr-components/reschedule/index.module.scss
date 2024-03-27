@@ -1,9 +1,15 @@
-@import '../../../stylesheets/mixins.scss';
-@import '../../../stylesheets/variable.scss';
+@import "../../../stylesheets/mixins.scss";
+@import "../../../stylesheets/variable.scss";
 
 .reschedule {
   @include flex-column-gap(2rem);
-  .button_style{
+  &_header {
+    @include flex-column-gap(1.5rem);
+    & div:last-child {
+      align-self: flex-end;
+    }
+  }
+  .button_style {
     align-self: flex-end;
   }
   &_requests {

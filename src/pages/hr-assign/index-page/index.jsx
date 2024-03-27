@@ -1,39 +1,36 @@
-import React, { useEffect, useState } from 'react';
-import { hrAssignConstants } from '../../../constants/hrAssign';
-import { hrComponents } from '../../../components/hr-components';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useState } from "react";
+import { hrAssignConstants } from "../../../constants/hrAssign";
+import { hrComponents } from "../../../components/hr-components";
+import { useDispatch, useSelector } from "react-redux";
+import { techHRDetails } from "../../../slice/hr-assign-slice/actions";
 
 //styles
-import styles from './index.module.scss';
-import { techHRDetails } from '../../../store/hr-assign-slice';
+import styles from "./index.module.scss";
 
 const HrAssign = () => {
   const [page, setPage] = useState(
-    hrAssignConstants.hrAssign ? hrAssignConstants.hrAssign[0] : ''
+    hrAssignConstants.hrAssign ? hrAssignConstants.hrAssign[0] : ""
   );
 
-  const [contest, setContest] = useState();
   const dispatch = useDispatch();
   const handleToggle = (page) => {
     setPage(page);
   };
 
-  const techHR = useSelector((state) => state.hrAssignDetails.techHR);
+  const techHR = useSelector((state) => state.hrAssignDetails.HR.techHR);
 
-  const personalHR = useSelector((state) => state.hrAssignDetails.personalHR);
+  const personalHR = useSelector(
+    (state) => state.hrAssignDetails.HR.personalHR
+  );
 
   const rescheduleRequest = useSelector(
     (state) => state.hrAssignDetails.rescheduleRequest
   );
 
   useEffect(() => {
-    dispatch(techHRDetails(page));
-    page === 'Technical HR'
-      ? setContest(techHR)
-      : page === 'Personal HR'
-      ? setContest(personalHR)
-      : setContest(rescheduleRequest, () => console.log(contest));
-  }, [page, dispatch]);
+    dispatch(techHRDetails("INTERVIEW"));
+    dispatch(techHRDetails("RESCHEDULE"));
+  }, [dispatch]); //eslint-disable-line
 
   return (
     <div className={styles.hrassign}>
@@ -42,14 +39,12 @@ const HrAssign = () => {
         handleToggle={handleToggle}
         page={page}
       />
-      {page === 'Personal HR' ? (
-        <hrComponents.Contest contests={hrAssignConstants.personalHR} />
-      ) : page === 'Technical HR' ? (
-        <hrComponents.Contest contests={hrAssignConstants.techHR} />
+      {page === "Personal HR" ? (
+        <hrComponents.Contest contests={personalHR} typeOfHR={"Personal HR"} />
+      ) : page === "Technical HR" ? (
+        <hrComponents.Contest contests={techHR} typeOfHR={"Technical HR"} />
       ) : (
-        <hrComponents.Reschedule
-          requests={hrAssignConstants.rescheduleRequest}
-        />
+        <hrComponents.Reschedule requests={rescheduleRequest} />
       )}
     </div>
   );

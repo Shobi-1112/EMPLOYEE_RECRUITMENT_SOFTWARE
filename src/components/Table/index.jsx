@@ -1,19 +1,11 @@
-import React, { useState } from "react";
-import "../Table/Table.scss";
-import Pagination from "../Pagination";
-import Button from "../Button";
-import { MdDelete, MdModeEdit } from "react-icons/md";
-import Popup from "../Popup";
+import React, { useState } from 'react';
+import './Table.scss';
+import Pagination from '../Pagination';
+import Button from '../Button';
+import { MdDelete, MdModeEdit } from 'react-icons/md';
+import Popup from '../Popup';
 
-const Table = ({
-  data = "",
-  isEditable,
-  isDeletable,
-  onEdit,
-  onDelete,
-  className,
-  isPopupUp
-}) => {
+const Table = ({ data = '', isEditable, isDeletable, onEdit, onDelete }) => {
   const [showPopup, setShowPopup] = useState(false);
   const [selectedRow, setSelectedRow] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
@@ -22,13 +14,13 @@ const Table = ({
   const handleClickRow = (rowData) => {
     setSelectedRow(rowData);
     setShowPopup(!showPopup);
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow = 'hidden';
   };
 
   const closePopup = () => {
     setShowPopup(!showPopup);
     setSelectedRow({});
-    document.body.style.overflow = "auto";
+    document.body.style.overflow = 'auto';
   };
 
   const startIndex = (currentPage - 1) * itemsPerPage;
@@ -48,7 +40,7 @@ const Table = ({
           <thead>
             <tr>
               {headers.map((header, index) => (
-                <th key={index}>{header.replace(/_/g, " ")}</th>
+                <th key={index}>{header.replace(/_/g, ' ')}</th>
               ))}
               {(isEditable || isDeletable) && <th>Action</th>}
             </tr>
@@ -66,12 +58,12 @@ const Table = ({
                   <td>
                     <Button
                       icon={<MdModeEdit />}
-                      className="Edit ButtonIcon"
+                      className='Edit ButtonIcon'
                       onClick={(e) => onEdit(row)}
                     />
                     <Button
                       icon={<MdDelete />}
-                      className="Delete ButtonIcon"
+                      className='Delete ButtonIcon'
                       onClick={(e) => onDelete(row)}
                     />
                   </td>
@@ -80,8 +72,8 @@ const Table = ({
                   <td>
                     <Button
                       icon={<MdModeEdit />}
-                      className="Edit ButtonIcon"
-                      onClick={(e) => onEdit(row)}
+                      className='Edit ButtonIcon'
+                      onClick={(e) => onEdit(row,rowIndex)}
                     />
                   </td>
                 )}
@@ -89,7 +81,7 @@ const Table = ({
                   <td>
                     <Button
                       icon={<MdDelete />}
-                      className="Delete ButtonIcon"
+                      className='Delete ButtonIcon'
                       onClick={(e) => onDelete(row)}
                     />
                   </td>
@@ -103,12 +95,12 @@ const Table = ({
   };
 
   return (
-    <div className="TableStyle">
+    <div className='TableStyle'>
       {DynamicTable(currentData, isEditable, isDeletable, onEdit, onDelete)}
 
       <Popup trigger={showPopup} setTrigger={closePopup} data={selectedRow}>
-        <div >
-          <div className="PopupContent">
+        <div>
+          <div className='PopupContent'>
             <ul>
               {Object.entries(selectedRow)?.map(([key, value]) => (
                 <li key={key}>

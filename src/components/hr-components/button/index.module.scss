@@ -2,9 +2,8 @@
 
 %button-style {
   gap: 0.4rem;
-  padding: 0.6rem 1rem;
+  padding: 0.41rem 0.7rem;
   color: $White;
-  // text-align: center;
   border: none;
   border-radius: 0.5rem;
   font-weight: bold;
@@ -46,7 +45,6 @@
 .button_component_green {
   background-color: $Green-Button;
   @extend %button-style;
-  padding: 0.4rem 0.7rem;
 }
 
 .button_component_green:hover {
@@ -58,4 +56,25 @@
 .button_component_green:active {
   background-color: $Green-Button;
   color: $White;
+}
+
+.button_component_yellow {
+  background-color: $yellow;
+  @extend %button-style;
+  color: $lightBlackText;
+  cursor: default;
+}
+
+.button_component_icon {
+  border: none;
+  background-color: transparent;
+  align-self: center;
+  font-size: 1.5rem;
+  color: rgba($admin-primary, 1);
+  cursor: pointer;
+}
+.button_component_green_static {
+  background-color: $Green-Button;
+  @extend %button-style;
+  cursor: default;
 }

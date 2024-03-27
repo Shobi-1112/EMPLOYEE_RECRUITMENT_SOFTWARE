@@ -1,19 +1,17 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Button from '../button';
-import ContentBox from '../text-match';
+import React, { useEffect } from "react";
+import Button from "../button";
+import ContentBox from "../text-match";
+import { useHandleClick } from "../../../utils/hr-assign-utils";
 
 //stylesheet
-import styles from './index.module.scss';
+import styles from "./index.module.scss";
+import { camelToSpacePascal } from "../../../utils/splitHR";
 
-const ContestDisplay = ({ contests }) => {
-  const navigate = useNavigate();
-  const handleClick = (contest) => {
-    console.log('click ', contest);
-    contest.status === 'Assigned'
-      ? navigate('/admin/hrAssign/contestdetails', { state: { data: contest } })
-      : navigate('/lo');
-  };
+const ContestDisplay = ({ contests, typeOfHR }) => {
+  const handleClick = useHandleClick();
+  let keys = Object.keys(contests[0] ? contests[0] : {});
+  keys = keys.filter((key) => key !== "roundId" && key !== "roundType");
+  useEffect(() => {}, [contests]);
   return (
     <div className={styles.contest_display}>
       {contests.map((contest, index) => {
@@ -22,17 +20,22 @@ const ContestDisplay = ({ contests }) => {
             <div
               className={`${styles.contest_display_details_box} flex-justify-between`}
             >
-              <ContentBox title={'Contest Name'} value={contest.contestName} />
-              <ContentBox title={'Round No'} value={contest.roundNumber} />
-              <ContentBox title={'Contest Date'} value={contest.contestDate} />
-              <ContentBox title={'Status'} value={contest.status} />
+              {keys.map((key) => {
+                return (
+                  <ContentBox
+                    key={key}
+                    title={camelToSpacePascal(key)}
+                    value={contest[key]}
+                  />
+                );
+              })}
             </div>
-            <div style={{ textAlign: 'center', width: '10%' }}>
+            <div style={{ textAlign: "center", width: "10%" }}>
               <Button
                 text={
-                  contest.status === 'Assigned' ? 'View Schedule' : 'Assign HR'
+                  contest.status === "Assigned" ? "View Schedule" : "Assign HR"
                 }
-                onClickFunction={() => handleClick(contest)}
+                onClickFunction={() => handleClick(contest, typeOfHR)}
               />
             </div>
           </div>

@@ -11,6 +11,7 @@
   flex-direction: $Flex-Direction;
 }
 
+
 @mixin Flex-Acenter($FD-value: row) {
   display: flex;
   align-items: center;
@@ -54,15 +55,44 @@
   align-items: $A-value;
 }
 
-@mixin flex-column-gap($gap) {
+//row
+@mixin flex-gap($gap) {
   display: flex;
-  flex-direction: column;
-  row-gap: $gap;
+  gap: $gap;
+}
+@mixin flex-justify-gap($justifyContent, $gap) {
+  display: flex;
+  justify-content: $justifyContent;
+  gap: $gap;
 }
 @mixin flex-row($alignItems, $justifyContent) {
   display: flex;
   align-items: $alignItems;
   justify-content: $justifyContent;
+}
+@mixin flex-row-coordinate($alignItems, $justifyContent, $gap) {
+  display: flex;
+  align-items: $alignItems;
+  justify-content: $justifyContent;
+  gap: $gap;
+}
+@mixin flex-row-center($gap, $alignItems) {
+  display: flex;
+  gap: $gap;
+  align-items: $alignItems;
+}
+
+//column
+@mixin flex-column-gap($gap) {
+  display: flex;
+  flex-direction: column;
+  row-gap: $gap;
+}
+
+@mixin flex-col-align($alignItems) {
+  display: flex;
+  flex-direction: column;
+  align-items: $alignItems;
 }
 @mixin flex-column-align-gap($alignItems, $gap) {
   display: flex;
@@ -70,8 +100,10 @@
   align-items: $alignItems;
   gap: $gap;
 }
-@mixin flex-row-center($gap, $alignItems) {
-  display: flex;
+//grid
+@mixin grid-container($rows, $column, $rowwidth, $columnwidth, $gap) {
+  display: grid;
+  grid-template-columns: repeat($column, $columnwidth);
+  grid-template-rows: repeat($rows, $rowwidth);
   gap: $gap;
-  align-items: $alignItems;
 }

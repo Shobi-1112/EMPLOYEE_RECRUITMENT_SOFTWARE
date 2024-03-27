@@ -10,7 +10,7 @@ const CollegeAddConatiner = ({ className, addcontestdetail,index,removevalue }) 
   const [emailContainers, setEmailContainers] = useState([{ email: '', name: '', college:"" }]);
   useEffect(() => {
     handleAddEmailContainer(); 
-  }, []);
+  }, []); //eslint-disable-line
 
   const handleAddEmailContainer = () => {
     setEmailContainers([...emailContainers, { email: '', name: '', college:'' }]);
