@@ -6,7 +6,7 @@
 
   .login-container {
     max-width: 34rem;
-    height: 25.875rem;
+    height: 26.875rem;
     margin: -42.75rem auto;
     padding: 1.25rem;
     border: 0.063rem solid #ccc;
@@ -53,7 +53,6 @@
     font-family: Arial, Helvetica, sans-serif;
     color: #000;
   }
-
   button {
     background-color: #333751;
     color: #fff;
@@ -64,7 +63,7 @@
     cursor: pointer;
     margin-left: 10.75rem;
     font-weight: 600;
-    margin-top: 0.5rem;
+    margin-top: 1.5rem;
   }
 
   button:hover {
@@ -78,9 +77,9 @@
     position: relative;
     cursor: pointer;
   }
-  .image {
-    width: 56rem;
-    height: 56rem;
+  .Loginimage {
+    width: 57rem;
+    height: 61rem;
   }
 }
 
@@ -95,7 +94,7 @@
   cursor: pointer;
   color: blue;
   padding-left: 3.25rem;
-  margin-top: -0.85rem;
+  margin-top: 0.15rem;
   text-Decoration: underline;
 }
 .toast-message {
@@ -108,8 +107,8 @@
 
     button.Toastify__close-button {
       position: absolute;
-      top: 0.5rem;
-      right: 0.5rem;
+      top: -.5rem;
+      right: 0.3rem;
       background: none;
       border: none;
       color: #ffffff;
@@ -123,5 +122,6 @@
       }
     }
   }
+  
 }
 

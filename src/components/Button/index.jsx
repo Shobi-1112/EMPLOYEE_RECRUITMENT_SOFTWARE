@@ -3,7 +3,7 @@ const Button = (props) => {
     <button
       id={props.id}
       type={props.type || "button"}
-      onClick={props.onClick}
+      onClick={()=>props.onClick()}
       title={props.title}
       key={props.index}
       className={props.className}

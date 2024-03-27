@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import Input from "../InputTag/index"
-import Button from "../Button/index"
+import React, { useState } from 'react';
+import Input from "../InputTag/index";
+import Button from "../Button/index";
 import axios from 'axios';
 import "../Bulkdata/Bulkdata.scss"
 import excel from "../../assets/exel.png" 
@@ -12,12 +12,14 @@ function Bulkdata({classname}) {
         try {
             const formData = new FormData();
             formData.append('file', file[0]); 
-            const response = await axios.post('https://cdef-106-51-80-105.ngrok-free.app/api/v1/questions/mcq/file',formData);
-            console.log(response.data); 
-          } catch (error) {
+            const contestData=`${sessionStorage.getItem("value")}`
+            const contestIdData="upload"
+            const response = await axios.post(`http://192.168.1.20:8081/api/v1/excel/${contestData}/${contestIdData}`,formData);
+            console.log("--->",response); 
+        } catch (error) {
             console.error('Error:', error);
-          }
-       console.log(file)
+        }
+        console.log(file);
     }
 
     const handleFileChange = (event) => {
@@ -42,4 +44,4 @@ function Bulkdata({classname}) {
   )
 }
 
-export default Bulkdata
+export default Bulkdata;

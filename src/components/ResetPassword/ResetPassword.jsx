@@ -1,75 +1,51 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./ResetPassword.scss";
 import { ToastContainer, toast } from "react-toastify";
+import axios from "axios";
 
 const Resetpassword = () => {
-  const [formData, setFormData] = useState({
-    currentPassword: "",
-    newPassword: "",
-    confirmPassword: "",
-    errors: {
-      currentPasswordError: "",
-      newPasswordError: "",
-      confirmPasswordError: "",
-    },
-  });
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const [token, setTokenData] = useState("");
+
+  useEffect(() => {
+    console.log("user");
+    const url = new URLSearchParams(window.location.search);
+    const tokenData = url.get("token");
+    setTokenData(tokenData);
+    console.log("token-->", tokenData);
+  }, []);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-      errors: {
-        ...formData.errors,
-        [`${name}Error`]: "",
-      },
-    });
+    if (name === "newPassword") {
+      setNewPassword(value);
+    } else if (name === "confirmPassword") {
+      setConfirmPassword(value);
+    }
   };
 
-  const handleReset = () => {
-    if (validateForm()) {
+  const handleReset = async () => {
+    try {
+      const data = {
+        newPassword,
+        token,
+      };
+      const response = await axios.post(
+        `http://192.168.1.20:8081/api/v1/employee/password-reset?token=${token}`,
+        data, {
+          headers:{
+            'Authorization':`${sessionStorage.getItem("token")}`
+          }
+        }
+      );
+      console.log(response);
       toast.success("Reset successful");
       window.location.href = "/";
+    } catch (error) {
+      console.error("Error resetting password:", error);
     }
-  };
-  const validateForm = () => {
-    let valid = true;
-    const newErrors = {};
-
-    if (formData.currentPassword.trim() === "") {
-      toast.error("Please enter valid current password", {
-        closeButton: true,
-      });
-      valid = false;
-    }
-    if (formData.newPassword.trim() === "") {
-      toast.error("Please enter valid new password", {
-        closeButton: true,
-      });
-      valid = false;
-    } else if (formData.newPassword.length < 8) {
-      toast.error("Please enter valid confirm password", {
-        closeButton: true,
-      });
-      valid = false;
-    }
-    if (formData.confirmPassword.trim() === "") {
-      toast.error("Please confirm your new password", {
-        closeButton: true,
-      });
-      valid = false;
-    } else if (formData.confirmPassword !== formData.newPassword) {
-      toast.error("Password doesn't match", {
-        closeButton: true,
-      });
-      valid = false;
-    }
-
-    setFormData({
-      ...formData,
-      errors: newErrors,
-    });
-    return valid;
   };
 
   return (
@@ -77,20 +53,6 @@ const Resetpassword = () => {
       <ToastContainer className="toast-message" closeButton={false} />
       <h1 className="heading">RESET PASSWORD</h1>
       <div className="Resetpasswordcontent">
-        <div className="passwordchange">
-          <p className="labelname">CURRENT PASSWORD :</p>
-          <input
-            type="password"
-            placeholder="Current password"
-            className="inputbox"
-            name="currentPassword"
-            value={formData.currentPassword}
-            onChange={handleInputChange}
-          />
-          {formData.errors.currentPasswordError && (
-            <p className="error">{formData.errors.currentPasswordError}</p>
-          )}
-        </div>
         <div className="newpassword">
           <p className="labelname">NEW PASSWORD :</p>
           <input
@@ -98,12 +60,9 @@ const Resetpassword = () => {
             placeholder="New password"
             className="inputbox"
             name="newPassword"
-            value={formData.newPassword}
+            value={newPassword}
             onChange={handleInputChange}
           />
-          {formData.errors.newPasswordError && (
-            <p className="error">{formData.errors.newPasswordError}</p>
-          )}
         </div>
         <div className="newpassword">
           <p className="labelname">CONFIRM PASSWORD :</p>
@@ -112,12 +71,9 @@ const Resetpassword = () => {
             placeholder="Confirm password"
             className="inputbox"
             name="confirmPassword"
-            value={formData.confirmPassword}
+            value={confirmPassword}
             onChange={handleInputChange}
           />
-          {formData.errors.confirmPasswordError && (
-            <p className="error">{formData.errors.confirmPasswordError}</p>
-          )}
         </div>
         <button className="Resetbutton" onClick={handleReset}>
           Reset

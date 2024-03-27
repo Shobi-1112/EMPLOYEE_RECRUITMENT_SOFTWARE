@@ -1,21 +1,21 @@
-import React, { useEffect, useRef } from 'react';
-import Chart from 'chart.js/auto';
+import React, { useEffect, useRef } from "react";
+import Chart from "chart.js/auto";
 
-const ChartComponent = ({ chartData, type="doughnut" }) => {
+const ChartComponent = ({ chartData, type = "doughnut", className }) => {
   const chartRef = useRef(null);
 
   useEffect(() => {
-    const ctx = chartRef.current.getContext('2d');
+    const ctx = chartRef.current.getContext("2d");
     const chartInstance = new Chart(ctx, {
-      type:type,
+      type: type,
       data: chartData,
       options: {
         plugins: {
           legend: {
-            display: false
+            display: false,
           },
-        }
-      }
+        },
+      },
     });
 
     return () => {
@@ -24,9 +24,8 @@ const ChartComponent = ({ chartData, type="doughnut" }) => {
   }, [chartData]);
 
   return (
-    <div style={{width:"10rem"}} className='maindiv'>
-        <p className='percentage'>80%</p>
-      <canvas ref={chartRef}/>
+    <div  className={"maindiv " + className}>
+      <canvas ref={chartRef} />
     </div>
   );
 };

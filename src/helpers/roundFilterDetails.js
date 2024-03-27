@@ -12,4 +12,4 @@ export const topContainerContent = [
     value: "MCQ",
   },
 ];
-export const roundFilterOptions = ["Percentage", "Count"];
+export const roundFilterOptions = ["Percentage"];

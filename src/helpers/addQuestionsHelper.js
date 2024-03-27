@@ -388,3 +388,83 @@ export const McqData = [
 ];
 
 export const mcqFilterOptions = ["Logical", "Verbal", "Aptitude", "Technical"];
+
+////////////////// Filter  /////////////////
+export const RoundFilterData = [
+  {
+    No: 1,
+    ContestantName: "contestant_1",
+    Email: "employee@gmail.com",
+    CollegeName: "College name",
+    Score:10,
+
+  },
+  {
+    No: 2,
+    ContestantName: "contestant_2",
+    Email: "employee@gmail.com",
+    CollegeName: "College name",
+    Score:30,
+  },
+  {
+    No: 3,
+    ContestantName: "contestant_3",
+    Email: "employee@gmail.com",
+    CollegeName: "College name",
+    Score:90,
+  },
+  {
+    No: 4,
+    ContestantName: "contestant_4",
+    Email: "employee@gmail.com",
+    CollegeName: "College name",
+    Score:90,
+  },
+  {
+    No: 5,
+    ContestantName: "contestant_5",
+    Email: "employee@gmail.com",
+    CollegeName: "College name",
+    Score:90,
+  },
+  {
+    No: 6,
+    ContestantName: "contestant_6",
+    Email: "employee@gmail.com",
+    CollegeName: "College name",
+    Score:90,
+  },
+  {
+    No: 7,
+    ContestantName: "contestant_7",
+    Email: "employee@gmail.com",
+    CollegeName: "College name",
+    Score:90,
+  },
+  {
+    No: 8,
+    ContestantName: "contestant_8",
+    Email: "employee@gmail.com",
+    CollegeName: "College name",
+    Score:90,
+  },
+  {
+    No: 9,
+    ContestantName: "contestant_9",
+    Email: "employee@gmail.com",
+    CollegeName: "College name",
+    Score:90,
+  },
+  {
+    No: 10,
+    ContestantName: "contestant_10",
+    Email: "employee@gmail.com",
+    CollegeName: "College name",
+    Score:90,
+  },
+];
+export const RoundFilterOptions = [
+  "Percentage",
+  "Count",
+];
+export const TestCasesOptions=["sample","hidden"]

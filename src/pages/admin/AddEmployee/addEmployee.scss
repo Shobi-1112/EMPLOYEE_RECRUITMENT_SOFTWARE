@@ -27,6 +27,13 @@
   .addEmployeeTableContainer {
     margin-top: 1rem;
     padding-top: 1rem;
+    margin-left: 3rem;
+   p{
+    margin-left: 38rem;
+    margin-top: 21rem;
+    font-size: 2.5rem;
+
+   }
     Table {
       .ButtonIcon {
         @include NoStyle;
@@ -58,70 +65,72 @@
     justify-content: center;
     align-items: center;
     z-index: 1000;
+  }
+}
+.popup_inner {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  width: 400px;
+  min-width: 27rem;
 
-    .popup_inner {
-      background-color: white;
-      padding: 20px;
-      border-radius: 5px;
-      width: 400px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-      min-width: 35rem;
-
-      .AddEmployeeType {
-        display: flex;
-        gap: 15%;
-        label {
-          margin: 1rem;
-          margin-left: 0;
-        }
-      }
-      .AddEmployeeTypeInner {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      h2 {
-        margin-bottom: 20px;
-      }
-
-      label {
-        display: block;
-        margin-bottom: 10px;
-      }
-
-      input[type="text"],
-      input[type="email"] {
-        max-width: 25rem;
-        width: 100%;
-        padding: 8px;
-        margin-bottom: 15px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-      }
-
-      input[type="radio"] {
-        margin-right: 5px;
-      }
-
-      Button {
-        @include NoStyle;
-        margin-top: 15px;
-        margin: 1rem;
-        height: 2rem;
-        width: 4rem;
-        font-size: 1rem;
-        border-radius: 8px;
-        color: #fff;
-        cursor: pointer;
-      }
-      .AddEmployeeSaveBtn {
-        background-color: $Green-Button;
-      }
-      .AddEmployeeCancelBtn {
-        background-color: gray;
-      }
+  .AddEmployeeType {
+    display: flex;
+    gap: 10%;
+    label {
+      margin: 1rem;
+      margin-left: 0;
     }
   }
+  .AddEmployeeTypeInner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  h2 {
+    margin-bottom: 20px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  input[type="text"],
+  input[type="email"] {
+    max-width: 25rem;
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  input[type="radio"] {
+    margin-right: 5px;
+    margin-top: -0.3rem;  }
+
+  Button {
+    @include NoStyle;
+    margin-top: 15px;
+    margin: 1rem;
+    height: 2rem;
+    width: 4rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    color: #fff;
+    cursor: pointer;
+  }
+  .AddEmployeeSaveBtn {
+    background-color: $Green-Button;
+  }
+  .AddEmployeeCancelBtn {
+    background-color: gray;
+  }
+}
+.EmployeeType {
+  display: flex;
+  gap: 3%;
 }

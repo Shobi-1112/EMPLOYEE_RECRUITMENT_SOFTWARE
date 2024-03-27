@@ -7,6 +7,9 @@
   }
   table {
     min-width: 70%;
+    /* max-width: 85%; <--
+     i have commented this style, if you wanna add this, 
+     please check with all the table stylings in every page */
     width: 100%;
     border-collapse: collapse;
     th:first-child,
@@ -43,9 +46,77 @@
         list-style-type: none;
         white-space: nowrap;
         overflow: hidden;
-        text-overflow: ellipsis;
+        // text-overflow: ellipsis;
       }
     }
   }
 }
 
+.percentageChart {
+  width: 2rem;
+  height: 10%;
+  border: 1px solid black;
+  border-radius: 15px;
+}
+.list-items {
+  margin-top: 1rem;
+}
+.View-Button,
+.Start-Button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.View-Button {
+  background-color: #4caf50;
+  color: white;
+}
+
+.Start-Button,
+.feedback-Button {
+  background-color: #606795;
+  border: none;
+  padding: 0.5rem;
+  margin-right: 1rem;
+  margin-left: 1rem;
+  color: white;
+}
+
+
+
+.status-Button-selected {
+  background-color: green;
+  border: none;
+  padding: 0.5rem;
+  margin-right: 1rem;
+  margin-left: 2rem;
+  color: white;
+}
+
+.status-Button-rejected {
+  background-color: red;
+  border: none;
+  padding: 0.5rem;
+  margin-right: 1rem;
+  margin-left: 2rem;
+  color: white;
+}
+.reschedule-Button {
+  background-color: #606795;
+  border: none;
+  padding: 0.5rem;
+  margin-right: 1rem;
+  margin-left: 1rem;
+  color: white;
+  cursor: pointer;
+}
+.download-Button {
+  background: none;
+  border: none;
+  width: 1rem;
+  cursor: pointer;
+  font-size: 1.5rem;
+}

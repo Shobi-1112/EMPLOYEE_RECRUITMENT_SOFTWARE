@@ -31,8 +31,8 @@ const Pagination = ({ totalItems, itemsPerPage, onPageChange }) => {
     }
   };
 
-  if (totalPages <= 1) {
-    return null; 
+  if (totalPages <= 1 ) {
+    return null;
   }
   const pageNumbers = [];
   for (let i = 1; i <= totalPages; i++) {
