@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "./ManualUpload.scss";
 import Button from "../../../../../../components/Button/index"
 import CollegeAddConatiner from './CollegeaddContainer';
 
-const ManualUpload = () => {
+const ManualUpload = ({setMainContestantAdd}) => {
   const [addCounter, setAddCounter] = useState(1); 
   const [removelement,setRemovelement]=useState()
   const [constinfo,setConstinfo]=useState([])
-  const [removecollege,setRemovecollege]=useState()
   const handleAddClick = () => {
     setAddCounter(addCounter + 1);   
   };
@@ -24,12 +23,21 @@ const ManualUpload = () => {
       }
     });
   };
+  const removeParticular=(remove)=>{
+      setConstinfo(previous=>previous.filter(item=>item.email!==remove))
+  }
 
    const removedetail=(value,collegename)=>{
     setAddCounter(addCounter-1)
     setRemovelement(value)
-    setRemovecollege(collegename)
+    setConstinfo(prevInfo => prevInfo.filter((item, index) => {
+      return item.college !== collegename && index !== value; 
+  }));
   }
+
+  useEffect(()=>{
+    setMainContestantAdd(constinfo)
+  },[constinfo])
   
   console.log(constinfo,"info")
    
@@ -43,6 +51,7 @@ const ManualUpload = () => {
               addcontestdetail={contestinfo} 
               index={index} 
               removevalue={removedetail}
+              removeParticular={removeParticular}
           />
       )
         ))}

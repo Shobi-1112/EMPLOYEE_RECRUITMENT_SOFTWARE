@@ -1,11 +1,14 @@
 @import "../../stylesheets/index.scss";
 
 .pagination {
+  // padding: .5rem;
+  width: 950px;
+  overflow: scroll;
   height: 3rem;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  margin : .2rem;
+  // align-items: center;
+  // justify-content: center;
+  margin : 2.7rem .2rem;
 
   a {
     text-decoration: none;
@@ -37,7 +40,8 @@
     border: none;
     height: 36px;
     font-size: 1.2rem;
-    width: 36px;
+    min-width: 36px;
+    margin: 0.4rem;
     border-radius: 50%;
     display: flex;
     align-items: center;

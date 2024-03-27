@@ -1,4 +1,8 @@
 .uploadContainer {
+    border: 1.5px black dashed;
+    width: 40rem;
+.uploadContainer {
+    width: 50rem;
     width: 50rem;
     height: 20rem;
     margin-top: 2rem;
@@ -11,7 +15,7 @@
     border: 1px dashed gray;
 
     .fileimg {
-        width: 10rem;
+        width: 10px;
     }
     .fileupload {
         font-size: 1rem;
@@ -19,6 +23,7 @@
         flex-direction: column;
     }
     .fileupload::-webkit-file-upload-button {
+        visibility: hidden; 
         visibility: hidden; 
     }
 
@@ -39,4 +44,5 @@
         background-color: #5962E8;
         border: none;
     }
+}
 }

@@ -40,6 +40,6 @@ export const SideBarNavigation = [
   {
     image: <BsFillInfoSquareFill />,
     text: "Contest Info",
-    path: "",// specify path to redirect
+    path: "contestinfo",// specify path to redirect
   },
 ];

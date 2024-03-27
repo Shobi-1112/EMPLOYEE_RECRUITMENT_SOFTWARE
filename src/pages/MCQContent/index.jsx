@@ -1,19 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "../MCQContent/MCQContent.scss";
-import { Rounds1 } from "../../helpers/RoundList";
+import { Rounds1, Weightage } from "../../helpers/RoundList";
 import InputTag from "../../components/InputTag";
 import WeightageCard from "../../components/WeightageCard";
 import { Percentageinfo } from "../../components/WeightageCard/PercentagetimeInfo";
 import Button from "../../components/Button";
+import axios from "axios";
 
 const MCQContent = ({setTotalCountDisplay, totalCountDisplay,setCategoryTitle,contestInfo,getinfovalue,setPopup}) => {
-  const [active, setActive] = useState({
-    Verbal: false,
-    Aptitude: false,
-    Logical: false,
-    Technical: false,
-  });
- 
+  const [active, setActive] = useState({});
   const [mcqround, setMcqround] = useState([]);
   const [percentages,setPercentages]=useState()
 
@@ -23,6 +18,30 @@ const MCQContent = ({setTotalCountDisplay, totalCountDisplay,setCategoryTitle,co
       [type]: checked,
     }));
   };
+  const [CheckboxInfo,setCheckboxInfo]=useState()
+
+  useEffect(() => {
+    const fetchDatamcq = async () => {
+      try {
+            const response = await axios.get(`http://localhost:8081/api/v1/contest/category?type=${"MCQ"}`);
+            setCheckboxInfo(response.data.object);
+            const headings = response.data.object.map(item => item.heading);
+              const codeActiveUpdate = {};
+              headings.forEach(heading => {
+                codeActiveUpdate[heading] = false;
+              });
+              setActive(prevState => ({
+                ...prevState,
+                ...codeActiveUpdate
+              }));
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    };
+
+    fetchDatamcq();
+}, []);
+
 
   const handleCheckboxChange = (event) => {
     const { checked, value } = event.target;
@@ -43,20 +62,20 @@ const MCQContent = ({setTotalCountDisplay, totalCountDisplay,setCategoryTitle,co
 
   const updatevalue=()=>{
     getinfovalue(mcqround,"MCQ",percentages)
-    setPopup(false) 
+    setPopup(false)
   }
-
+  // console.log(mcqround)
   return (
     <div>
       <div className="CodingContent">
-        {Rounds1.map((item, index) => (
+        {CheckboxInfo?.map((item, index) => (
           <InputTag
             type="checkbox"
-            Process={item}
+            Process={item.heading}
             key={index}
-            value={item}
+            value={item.heading}
             onChange={handleCheckboxChange}
-            checkboxHeading={item}
+            checkboxHeading={item.heading}
           />
         ))}
       </div>
@@ -65,9 +84,10 @@ const MCQContent = ({setTotalCountDisplay, totalCountDisplay,setCategoryTitle,co
           <WeightageCard
             key={key}
             active={value}
-            title={key.toUpperCase()}
+            title={key}
             add={addMcqRoundData}
             roundNumber={1}
+            categoryId={CheckboxInfo}
           />
         ))}
       </div>

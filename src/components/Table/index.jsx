@@ -6,6 +6,7 @@ import { MdDelete, MdModeEdit } from "react-icons/md";
 import Popup from "../Popup";
 import PieChart from "../Piechart/index";
 import { IoMdDownload } from "react-icons/io";
+import { useNavigate } from "react-router";
 
 const Table = ({
   data = [],
@@ -22,19 +23,23 @@ const Table = ({
   onStatus,
   currentData
 }) => {
+  if (!Array.isArray(data)) {
+    console.error("Data is not an array:", data);
+    return null;
+  }
   const [showPopup, setShowPopup] = useState(false);
-  const [selectedRow, setSelectedRow] = useState({});
+  const [selectedRow, setSelectedRow] = useState();
   const [currentPage, setCurrentPage] = useState(1);
   const [sortBy, setSortBy] = useState(null);
   const [sortAsc, setSortAsc] = useState(true);
   const itemsPerPage = 8;
-
-  const handleClickRow = (rowData) => {
+  const navigate = useNavigate()
+  const handleClickRow = async (rowData) => {
     setSelectedRow(rowData);
     setShowPopup(!showPopup);
     document.body.style.overflow = 'hidden';
   };
- 
+
   const closePopup = () => {
     setShowPopup(!showPopup);
     setSelectedRow({});
@@ -71,6 +76,9 @@ const Table = ({
   }
 
   const DynamicTable = () => {
+    if (!Array.isArray(data) || data.length === 0) {
+      return null;
+    }
     const headers = Object?.keys(data[0]);
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
@@ -117,18 +125,18 @@ const Table = ({
                     };
                     return (
                       <td
-                      key={rowIndex}
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "10%",
-                      }}
-                    >
-                      <PieChart
-                        chartData={chartData}
-                        className={"percentageChart"}
-                      />
-                    </td>
+                        key={rowIndex}
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "10%",
+                        }}
+                      >
+                        <PieChart
+                          chartData={chartData}
+                          className={"percentageChart"}
+                        />
+                      </td>
                     );
                   } else {
                     return (
@@ -163,51 +171,51 @@ const Table = ({
                   onFeedback ||
                   onReschedule ||
                   onStatus) && (
-                  <td>
-                    {isEditable && (
-                      <Button
-                        icon={<MdModeEdit />}
-                        className="Edit ButtonIcon"
-                        onClick={(e) => onEdit(row)}
-                      />
-                    )}
-                    {isDeletable && (
-                      <Button
-                        icon={<MdDelete />}
-                        className="Delete ButtonIcon"
-                        onClick={(e) => onDelete(row)}
-                      />
-                    )}
-                    {onStart && (
-                      <Button
-                        text="Start"
-                        className="Start-Button"
-                        onClick={(e) => onStart(rowIndex)}
-                      />
-                    )}
-                    {onReschedule && (
-                      <Button
-                        text="Reschedule"
-                        className="reschedule-Button"
-                        onClick={() => onReschedule(rowIndex)}
-                      />
-                    )}
-                    {onFeedback && (
-                      <Button
-                        text="Feedback"
-                        className="feedback-Button"
-                        onClick={() => onFeedback(rowIndex)}
-                      />
-                    )}
-                  </td>
-                )}
+                    <td>
+                      {isEditable && (
+                        <Button
+                          icon={<MdModeEdit />}
+                          className="Edit ButtonIcon"
+                          onClick={(e) => onEdit(row)}
+                        />
+                      )}
+                      {isDeletable && (
+                        <Button
+                          icon={<MdDelete />}
+                          className="Delete ButtonIcon"
+                          onClick={(e) => onDelete(row)}
+                        />
+                      )}
+                      {onStart && (
+                        <Button
+                          text="Start"
+                          className="Start-Button"
+                          onClick={(e) => onStart(rowIndex)}
+                        />
+                      )}
+                      {onReschedule && (
+                        <Button
+                          text="Reschedule"
+                          className="reschedule-Button"
+                          onClick={() => onReschedule(rowIndex)}
+                        />
+                      )}
+                      {onFeedback && (
+                        <Button
+                          text="Feedback"
+                          className="feedback-Button"
+                          onClick={() => onFeedback(rowIndex)}
+                        />
+                      )}
+                    </td>
+                  )}
 
                 {onStatus && (
                   <td>
                     <Button
                       icon={<MdModeEdit />}
                       className='Edit ButtonIcon'
-                      onClick={(e) => onEdit(row,rowIndex)}
+                      onClick={(e) => onEdit(row, rowIndex)}
                     />
                   </td>
                 )}
@@ -220,8 +228,21 @@ const Table = ({
                     />
                   </td>
                 )}
+                {!isEditable && !isDeletable && isViewbtn && (
+                  <td>
+                    <div className="viewButton-wrapper">
+                      <Button
+                        icon={<IoEyeSharp />}
+                        text={"View"}
+                        className="viewButtonIcon"
+                        onClick={() => onView(data, rowIndex)}
+                      />
+                    </div>
+                  </td>
+                )}
               </tr>
-            ))}
+            )
+            )}
           </tbody>
         </table>
       </>
@@ -236,7 +257,7 @@ const Table = ({
         <div>
           <div className='PopupContent'>
             <ul>
-              {Object.entries(selectedRow).map(([key, value]) => (
+              {Object?.entries(selectedRow || {}).map(([key, value]) => (
                 <li key={key} type="none" className="listitems">
                   <strong>{key}:</strong> {JSON.stringify(value)}
                 </li>
@@ -245,31 +266,31 @@ const Table = ({
           </div>
         </div>
       </div>
-      </div>
-    );
-    // return (
-    //   <div className="TableStyle">
-    //     {DynamicTable()}
-  
-    //     <Popup
-    //       trigger={showPopup}
-    //       setTrigger={closePopup}
-    //       data={selectedRow}
-    //       body={values()}
-    //     />
-    //     {data && (
-    //       <Pagination
-    //         totalItems={data.length}
-    //         itemsPerPage={itemsPerPage}
-    //         onPageChange={handlePageChange}
-    //       />
-    //     )}
-    //   </div>
-    // )
-  
-  };
-  
+    </div>
+  );
+  // return (
+  //   <div className="TableStyle">
+  //     {DynamicTable()}
 
-  
+  //     <Popup
+  //       trigger={showPopup}
+  //       setTrigger={closePopup}
+  //       data={selectedRow}
+  //       body={values()}
+  //     />
+  //     {data && (
+  //       <Pagination
+  //         totalItems={data.length}
+  //         itemsPerPage={itemsPerPage}
+  //         onPageChange={handlePageChange}
+  //       />
+  //     )}
+  //   </div>
+  // )
+
+};
+
+
+
 
 export default Table;

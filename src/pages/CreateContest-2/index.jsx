@@ -3,18 +3,16 @@ import "./addpopupmcq.scss";
 import Switching from "../../components/Switching/Switching";
 import MCQContent from "../MCQContent";
 import CodingContent from "../CodingContent";
-import Button from "../../components/Button";
+// import Button from "../../components/Button";
 import InputTag from "../../components/InputTag";
 
-const Addpopupmcq = ({arrays,setPopup}) => {
+const Addpopupmcq = ({arrays,setPopup,arraylength}) => {
   const array = ["MCQ", "CODING"];
   const [state, setState] = useState("MCQ");
   const setMcqdata = useState([]);
   const [totalCountDisplay, setTotalCountDisplay] = useState(0);
   const [CategoryTitle, setCategoryTitle] = useState("");
   // const [totalcontestInfo,setTotalcontestInfo]=useState([])
-
-  const roundinfo=[]
   const [totalcounts, setTotalcounts] = useState({
     VERBAL: 0,
     APTITUDE: 0,
@@ -39,20 +37,23 @@ const Addpopupmcq = ({arrays,setPopup}) => {
   }, [totalCountDisplay]);
 
   const getinfovalue = (value,title,percentages) => {
+    console.log(value)
+    const nonNullUndefinedValues = value.filter(item => item !== null && item !== undefined);
     arrays(prevRoundinfo => [
         ...prevRoundinfo,
         {
             roundType:title,
+            roundNumber:arraylength+1,
             PassPercentage: percentages.PassPercentage,
-            StartDateTime: percentages.StartDateTime,
-            EndDateTime: percentages.EndDateTime,
-            part: [value]
+            startTime: percentages.StartDateTime,
+            endTime: percentages.EndDateTime,
+            parts: nonNullUndefinedValues
         }
     ]);
 };
   return (
     <div className="CreateContest">
-      <div className="Addrounds">
+      <div className="Addrounds" style={{width:state!=="MCQ"?"85rem":"70rem"}}>
         <span className="AddRoundstitle"> Add Rounds</span>
         <Switching Arrayofvalue={array} renderContent={setState} />
         {state === "MCQ" ? (
@@ -76,7 +77,7 @@ const Addpopupmcq = ({arrays,setPopup}) => {
         <div className="TotalQuestionCount">
           <p>Total questions count:{sum}</p>
           {state === "MCQ" ? (
-            <p>Total duration in mins:</p>
+            <p>Total duration:</p>
           ) : (
             <InputTag
               type={"text"}

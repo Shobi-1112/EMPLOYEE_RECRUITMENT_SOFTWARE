@@ -13,7 +13,7 @@ const Home = () => {
     const fetchAdminHomeData = async () => {
       try {
         const response = await axios.get(
-          `http://192.168.1.139:8082/api/v1/contest/admin/home`,
+          `http://192.168.1.20:8081/api/v1/contest/admin/home`,
           {
             headers:{
               'Authorization':`${sessionStorage.getItem("token")}`

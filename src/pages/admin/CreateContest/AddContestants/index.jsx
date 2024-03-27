@@ -4,7 +4,7 @@ import'./AddContestant.scss';
 import ManualUpload from "./modalChildren/ManualUpload/index";
 import FileUpload from "./modalChildren/FileUpload/index";
 
-const AddContestants = () => {
+const AddContestants = ({setMainContestantAdd}) => {
     const array = ["Manual", "File Upload"];
     const [state, setState] = useState("Manual");
     // const [manualdata, setmanualdata] = useState([]);
@@ -17,7 +17,7 @@ const AddContestants = () => {
         <div className="Upload">
           <h1 className="addcontestantHeading"> Add Contestants</h1>
           <Switching Arrayofvalue={array} renderContent={rendervalue} className={"switchingfont"} />
-          {state === "Manual" ? <ManualUpload/>: <FileUpload />}
+          {state === "Manual" ? <ManualUpload setMainContestantAdd={setMainContestantAdd}/>: <FileUpload />}
         </div>
     </div>
   );

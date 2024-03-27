@@ -14,11 +14,11 @@ const HRassign = ({totalrounds,Hrvalue}) => {
   }, [containervalue]);
 
   const [radivalue, setRadiovalue] = useState("")
-  const [length, setLength] = useState(totalrounds+1);
-  const radioHeading=["Technical HR","Personal HR"]
+  const [length, setLength] = useState(totalrounds);
+  const radioHeading=["TECHNICAL_INTERVIEW","PERSONAL_INTERVIEW"]
 
   const handleAddRound = (roundType) => {
-    const newRound = { roundNumber: `Round ${length + 1}`, roundType };
+    const newRound = { roundNumber: length + 1, roundType };
     setContainervalue([...containervalue, newRound]);
     setLength(length + 1)
   };
@@ -44,7 +44,7 @@ const HRassign = ({totalrounds,Hrvalue}) => {
       {containervalue.map((round, index) => (
         <div className='RoundisplayContainer' key={index}>
           <div key={index} className='roundinfo'>
-            <h2 style={{color:"#543cc7"}}>{round.roundNumber}</h2>
+            <h2 style={{color:"#543cc7"}}>{`Round  ${round.roundNumber}`}</h2>
             <p>{round.roundType}</p>
           </div>
           <RiDeleteBin5Line className='dustbin' onClick={() => handleDeleteRound(index)} />
