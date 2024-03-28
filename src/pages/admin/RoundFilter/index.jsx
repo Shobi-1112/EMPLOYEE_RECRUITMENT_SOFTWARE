@@ -10,7 +10,7 @@ import {
   roundFilterOptions,
   topContainerContent,
 } from "../../../helpers/roundFilterDetails";
-import {RoundFilterData} from "/home/divum/shobi/trail/hiring-platform-frontend/src/helpers/addQuestionsHelper.js"
+// import {RoundFilterData} from "/home/divum/shobi/trail/hiring-platform-frontend/src/helpers/addQuestionsHelper.js"
 const RoundFilerDetails = ({ onUpdateClick }) => {
   const [filterType, setFilterType] = useState("percentage");
   const [filterValue, setFilterValue] = useState(0);

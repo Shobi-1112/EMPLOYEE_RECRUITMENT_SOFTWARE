@@ -21,7 +21,7 @@ const AssingnedContestant = () => {
     const fetchContestantData = async () => {
       try {
         const response = await axios.get(
-          `http://192.168.1.139:8081/api/v1/employee/${sessionStorage.getItem(
+          `http://192.168.1.20:8081/api/v1/employee/${sessionStorage.getItem(
             "userId"
           )}/interviews/${contestId}`, {
             headers:{

@@ -5,7 +5,7 @@ import "./Collegeadd.scss";
 import { RxCross2 } from "react-icons/rx";
 import { IoRemoveCircleOutline } from "react-icons/io5";
 
-const CollegeAddConatiner = ({ className, addcontestdetail,index,removevalue }) => {
+const CollegeAddConatiner = ({ className, addcontestdetail,index,removevalue,removeParticular }) => {
   const [collegenames, setCollegenames] = useState("");
   const [emailContainers, setEmailContainers] = useState([{ email: '', name: '', college:"" }]);
   useEffect(() => {
@@ -16,10 +16,11 @@ const CollegeAddConatiner = ({ className, addcontestdetail,index,removevalue }) 
     setEmailContainers([...emailContainers, { email: '', name: '', college:'' }]);
 
   };
-  // console.log(emailContainers)
-
-  const handleRemoveEmailContainer = (index) => {
+ 
+  const handleRemoveEmailContainer = (index,remove) => {
     setEmailContainers(emailContainers.filter((_, idx) => idx !== index));
+    removeParticular(remove)
+    console.log(index)
   };
 
   const handleEmailChange = (index, field, value) => {
@@ -53,11 +54,11 @@ const CollegeAddConatiner = ({ className, addcontestdetail,index,removevalue }) 
               onChange={(e) => handleEmailChange(index, 'name', e.target.value)}
             />
           </div>
-          {index !== 0 && <IoRemoveCircleOutline className='minusbutton' onClick={() => handleRemoveEmailContainer(index)} />}
+          {index !== 0 && <IoRemoveCircleOutline className='minusbutton' onClick={() => handleRemoveEmailContainer(index,container.email)} />}
         </div>
       ))}
       <Button text={"Add Student"} className={"collegeaddbuttons"} onClick={handleAddEmailContainer} />
-      <Button text={"submit"} className={"submitbutton"} onClick={() => { addcontestdetail(emailContainers) }}></Button>
+      <Button text={"Submit"} className={"submitbutton"} onClick={() => { addcontestdetail(emailContainers) }}></Button>
 
     </div>
   );

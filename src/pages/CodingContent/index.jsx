@@ -5,17 +5,13 @@ import InputTag from '../../components/InputTag';
 import WeightageCard from '../../components/WeightageCard';
 import { Percentageinfo } from '../../components/WeightageCard/PercentagetimeInfo';
 import Button from '../../components/Button';
+import axios from 'axios';
 
 const CodingContent = ({setTotalCountDisplay, totalCountDisplay,setCategoryTitle,getinfovalue,setPopup}) => {
-    const [codeactive, setCodeactive] = useState({
-        DS: false,
-        Mathematics: false,
-        Strings: false,
-        Pattern: false,
-    });
-  const [addata,setAddata]=useState()
+    const [codeactive, setCodeactive] = useState({});
+  // const [addata,setAddata]=useState()
     
-  const [codinground, setcodinground] = useState([]);
+  const [codinground, setCodinground] = useState([]);
   const[Codingpercentage,setCodingpercentage]=useState([]);
 
     const toggleCodeactive = (type, checked) => {
@@ -25,16 +21,43 @@ const CodingContent = ({setTotalCountDisplay, totalCountDisplay,setCategoryTitle
         }));
     };
 
-    const handleCodeCheckboxChange = (event) => {
-        const { checked, value } = event.target;
-        toggleCodeactive(value, checked);
-    };
+    
+    const [Checkboxcoding,setCheckboxcoding]=useState()
+    
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+              const response = await axios.get(`http://localhost:8081/api/v1/contest/category?type=${"CODING"}`);
+              setCheckboxcoding(response.data.object);
+              const headings = response.data.object.map(item => item.heading);
+              const codeActiveUpdate = {};
+              headings.forEach(heading => {
+                codeActiveUpdate[heading] = false;
+              });
+              setCodeactive(prevState => ({
+                ...prevState,
+                ...codeActiveUpdate
+              }));
+          } catch (error) {
+              console.error("Error fetching data:", error);
+          }
+        };
+        
+        fetchData();
+      }, []);
+      
+      const handleCodeCheckboxChange = (event) => {
+          const { checked, value } = event.target;
+          toggleCodeactive(value, checked);
+      };
+  
 
 
     const addRoundData = (roundType, partData, assignedTime, sumOfWeightages, title) => {
         setTotalCountDisplay(sumOfWeightages)
         setCategoryTitle(title)
-        setcodinground(previous => {
+        console.log(partData?.category?.categoryId)
+        setCodinground(previous => {
             const newArray = [...previous];
             newArray[partData?.category?.categoryId] = partData;
             return newArray;
@@ -44,24 +67,24 @@ const CodingContent = ({setTotalCountDisplay, totalCountDisplay,setCategoryTitle
     const Codingpercentages =(percentagevalue)=>{
        setCodingpercentage(percentagevalue);
       }
-    
-    
+      
+    console.log(Checkboxcoding)
       const updatevalue=()=>{
-        getinfovalue(codinground,"Coding",Codingpercentage)
+        getinfovalue(codinground,"CODING",Codingpercentage)
         setPopup(false) 
       }
     
     return (
         <div>
             <div className="CodingContent">
-                {Rounds2.map((item, index) => (
+                {Checkboxcoding?.map((item, index) => (
                     <InputTag
                         type="checkbox"
-                        Process={item}
+                        Process={item.heading}
                         key={index}
-                        value={item}
+                        value={item.heading}
                         onChange={handleCodeCheckboxChange}
-                        checkboxHeading={item}
+                        checkboxHeading={item.heading}
                     />
                 ))}
             </div>
@@ -70,9 +93,10 @@ const CodingContent = ({setTotalCountDisplay, totalCountDisplay,setCategoryTitle
                     <WeightageCard
                         key={key}
                         active={value}
-                        title={key.toUpperCase()}
+                        title={key}
                         add={addRoundData}
                         roundNumber={2} 
+                        categoryId={Checkboxcoding}
                         />
                       ))}
             </div>

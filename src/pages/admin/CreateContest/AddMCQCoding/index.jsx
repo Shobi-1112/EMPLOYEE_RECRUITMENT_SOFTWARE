@@ -2,7 +2,7 @@ import React,{useEffect, useState} from 'react'
 import "./AddMCQCoding.scss"
 import InputTag from '../../../../components/InputTag'
 import Button from '../../../../components/Button'
-import assets from '../../../../assets'
+
 import Addpopupmcq from '../../../CreateContest-2'
 import Popup from '../../../../components/Popup'
 import RoundLog from '../../../RoundLog'
@@ -13,7 +13,7 @@ const AddMCQandCoding = ({setTotalrounds,Hrinfo}) => {
     const storedArray = localStorage.getItem('array');
     return storedArray ? JSON.parse(storedArray) : [];
   });
-
+  
   const handleDeletemcq = (index) => {
     const newRounds = [...array];
     newRounds.splice(index, 1);
@@ -21,11 +21,11 @@ const AddMCQandCoding = ({setTotalrounds,Hrinfo}) => {
   };
   
   useEffect(() => {
+    setTotalrounds(array.length)
     localStorage.setItem('array', JSON.stringify(array));
   }, [array]);
-    setTotalrounds(array.length)
     const mcqCoding = () => {
-        return <Addpopupmcq setPopup={setPopup} arrays={setarray}/>;
+        return <Addpopupmcq setPopup={setPopup} arrays={setarray} arraylength={array.length}/>;
       };
 
       

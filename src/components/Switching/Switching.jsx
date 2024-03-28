@@ -23,8 +23,10 @@ const Switching = ({
           <div
             key={f}
             style={{
-              borderBottom: selectedOption === f ? "4px green solid" : "none",
-              cursor: "pointer",
+              paddingBottom:"7px",
+              borderBottom:
+                selectedOption === f ? "4px green solid" : "none",
+              cursor: "pointer"
             }}
             onClick={() => {
               handleCheck(f);

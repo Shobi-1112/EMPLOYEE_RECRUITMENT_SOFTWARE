@@ -7,25 +7,27 @@ import { MdDeleteOutline } from "react-icons/md";
 
 const RoundLog = ({array,index,handleDeletemcq}) => {
        console.log(array)
-      const verbal=array.part[0][0].Easy+array.part[0][0].Medium+array.part[0][0].Hard;
-      const aptitude=array.part[0][1].Easy+array.part[0][1].Medium+array.part[0][1].Hard;
-      const logical=array.part[0][2].Easy+array.part[0][2].Medium+array.part[0][2].Hard;
-      const tecnical=array.part[0][3].Easy+array.part[0][3].Medium+array.part[0][3].Hard;
-    
+      //  const verbal = (array.parts[0][0]?.easy ?? "") + (array.parts[0][0]?.medium ?? "") + (array.parts[0][0]?.hard ?? "");
+      //  const aptitude = (array.parts[0][1]?.easy ?? "") + (array.parts[0][1]?.medium ?? "") + (array.parts[0][1]?.hard ?? "");
+      //  const logical = (array.parts[0][2]?.easy ?? "") + (array.parts[0][2]?.medium ?? "") + (array.parts[0][2]?.hard ?? "");
+      //  const technical = (array.parts[0][3]?.easy ?? "") + (array.parts[0][3]?.medium ?? "") + (array.parts[0][3]?.hard ?? "");
+       
       const sampleData = {
-      roundNumber: index+1,
-      category: array.roundnumber,
-      passPercentage: array.PassPercentage,
-      startDate: array.StartDateTime,
-      endDate:array.EndDateTime,
-      questions: [
-        { Category: array.part[0][0].category.category, Easy:array.part[0][0].Easy,Medium:array.part[0][0].Medium,Hard:array.part[0][0].Hard, QuestionCount:verbal, Duration:15 },
-        { Category: array.part[0][1].category.category,   Easy:array.part[0][1].Easy,Medium:array.part[0][1].Medium,Hard:array.part[0][1].Hard, QuestionCount:aptitude, Duration:15  },
-        { Category: array.part[0][2].category.category,  Easy:array.part[0][2].Easy,Medium:array.part[0][2].Medium,Hard:array.part[0][2].Hard, QuestionCount:logical, Duration:15  },
-        { Category: array.part[0][3].category.category,  Easy:array.part[0][3].Easy,Medium:array.part[0][3].Medium,Hard:array.part[0][3].Hard, QuestionCount:tecnical, Duration:15  },
-
-      ]
-    };
+        roundNumber: index + 1,
+        category: array.roundType,
+        passPercentage: array.PassPercentage,
+        startDate: array.startTime,
+        endDate: array.endTime,
+        questions: array.parts.map((item,index) => ({
+          Category: item?.category.category,
+          Easy: item?.easy,
+          Medium: item?.medium,
+          Hard: item?.hard,
+          // QuestionCount:index===0?verbal:index===1?aptitude:index===2?logical:technical ,
+          Duration:item?.assignedTime
+        }))
+      };
+      
 
   const { roundNumber, category, passPercentage, startDate, endDate, questions } = sampleData;
 

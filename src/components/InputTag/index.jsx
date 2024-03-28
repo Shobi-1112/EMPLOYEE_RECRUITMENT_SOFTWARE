@@ -13,7 +13,6 @@ const InputTag = (props) => {
     checkboxHeading
   } = props;
 
- 
 
   return (
     <div className="common-input">
@@ -25,7 +24,8 @@ const InputTag = (props) => {
         value={value}
         className={className}
         type={type}
-        onClick={onClick}    
+        onClick={onClick}  
+        autoComplete="false"  
       />
       <label style={{marginLeft:"1rem"}}>{checkboxHeading}</label>
     </div>

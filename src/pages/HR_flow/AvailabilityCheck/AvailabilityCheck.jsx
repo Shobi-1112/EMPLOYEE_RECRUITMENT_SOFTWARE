@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import done from "/home/divum/shobi/trail/hiring-platform-frontend/src/assets/doneicon.png";
+// import done from "/home/divum/shobi/trail/hiring-platform-frontend/src/assets/doneicon.png";
+import assets from "../../../assets";
 import "./AvailabilityCheck.scss"
 import axios from "axios";
 
@@ -34,7 +35,7 @@ const AvailabilityCheck = () => {
   return (
     <div className="availabilty-container">
       <div>
-        <img src={done} className="image"></img>
+        <img src={assets.doneIcon} className="image"></img>
       </div>
       Thank you for your response
     </div>

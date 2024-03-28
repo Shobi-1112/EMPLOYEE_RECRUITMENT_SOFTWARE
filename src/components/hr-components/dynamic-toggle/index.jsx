@@ -1,19 +1,21 @@
 import React from 'react';
 import styles from './index.module.scss';
 
-const DynamicToggle = ({ switchStates, handleToggle, page }) => {
+const DynamicToggle = ({ switchStates, handleToggle, page, home }) => {
   return (
-    <div className={styles.dynamicToggle}>
-      {switchStates.map((item) => {
+    <div className={styles?.dynamicToggle}>
+      {switchStates?.map((item, index) => {
         return (
           <button
-            key={item}
-            className={item === page ? styles.selected:''}
+            key={index}
+            className={ item === page ? styles?.selected : ''}
             onClick={() => {
-              handleToggle(item);
+              handleToggle(item, index);
             }}
           >
-            {item}
+            {
+             item
+            }
           </button>
         );
       })}

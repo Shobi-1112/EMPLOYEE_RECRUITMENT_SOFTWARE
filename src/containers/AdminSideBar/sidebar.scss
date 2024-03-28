@@ -1,10 +1,13 @@
 @import "../../stylesheets/index.scss";
 
+
 .SideBar {
 
   color: $White;
 
+
   background-color: $Blue;
+
 
   height: 100vh;
 
@@ -12,9 +15,12 @@
 
   position: sticky;
 
+
   padding: 1.7rem 0;
 
+
   @include Flex-Column;
+
 
   @include Flex-JC(space-between);
 
@@ -22,8 +28,10 @@
 
     height: 4rem;
 
+
     padding-left: 1.2rem;
   }
+
 
   .SideBarNavigationIconSection {
     padding-top: 2.5rem;
@@ -37,9 +45,12 @@
 
     position: relative;
 
+
     padding-left: 1rem;
 
+
     text-decoration: none;
+
 
     &:hover,
 
@@ -49,19 +60,25 @@
 
     }
 
+
     &:hover::before,
 
     &.active::before {
 
       position: absolute;
 
+
       content: "";
+
 
       height: 100%;
 
+
       width: 0.2rem;
 
+
       background-color: $White;
+
 
       left: 0.1rem;
 
@@ -69,42 +86,56 @@
 
   }
 
+
   .NavLinksIcons,
 
   .navigationButton {
 
     @include NoStyle;
 
+
     @include Flex-Acenter;
+
 
     color: $White;
 
+
     height: 5rem;
+
 
     font-size: 1.4rem;
 
+
     padding: 0.5rem 1rem;
+
 
     cursor: pointer;
 
   }
 
+
   .AccountInfo {
 
     background-color: $LiteBlack;
 
+
     height: 4.2rem;
+
 
     @include Flex-Jcenter-Acenter(row);
 
+
     position: relative;
+
 
     color: $White;
 
+
     font-size: 2rem;
 
+
     gap: 10%;
-    bottom: -1.6rem; 
+    bottom: -1.6rem;
     cursor: pointer;
 
 
@@ -119,6 +150,7 @@
       min-width: 5rem;
       // max-width: 60rem;
       width: 100%;
+
 
       bottom: 6rem;
       display: flex;
@@ -135,17 +167,24 @@
 
         @include NoStyle;
 
+
         background: rgb(96, 96, 233);
+
 
         height: 3rem;
 
+
         width: 100%;
+
 
         font-size: 1.4rem;
 
+
         color: $White;
 
+
         @include Flex-Jcenter-Acenter(row);
+
 
         gap: 3%;
 
@@ -167,11 +206,14 @@
 
       @include NoStyle;
 
+
       color: $White;
+
 
       font-size: 1.4rem;
 
     }
+
 
     .AccountActionBTN {
 
