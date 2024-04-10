@@ -1,0 +1,90 @@
+$Primary: #757575;
+$Secondary: #333751;
+
+.MCQ {
+  width: 100%;
+  display: flex;
+  font-family: Arial, Helvetica, sans-serif;
+  color: $Primary;
+  .QuestionLayout {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    position: relative;
+    height: 100vh;
+    max-width: 90rem;
+    width: 100%;
+    overflow-y: visible;
+  }
+  .Question {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0 3rem;
+    margin-top: -1rem;
+  }
+
+  .Questionbar {
+    width: 25em;
+  }
+  .Questionnumber {
+    display: flex;
+    gap: 1rem;
+    font-size: 20px;
+  }
+  .McqQuestion {
+    font-size: 25px;
+    width: 90%;
+    margin-bottom: 2rem;
+  }
+  .Options {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    .common-input {
+      width: 40%;
+    }
+    label {
+      font-size: 1.4rem;
+      display: flex;
+      gap: 6%;
+      width: 14rem;
+    }
+  }
+  .navigation-buttons {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  .submit-next-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .previousbutton {
+    background-color: $Secondary;
+    color: white;
+    height: 30px;
+    width: 90px;
+    border-radius: 15px;
+    margin-right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .nextbutton {
+    background-color: $Secondary;
+    color: white;
+    height: 30px;
+    width: 90px;
+    border-radius: 15px;
+    margin-right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

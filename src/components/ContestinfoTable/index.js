@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./contestinfoTable.scss";
+import "../ContestinfoTable/ContestinfoTable.scss";
 import Pagination from "../Pagination";
 import Button from "../Button";
 import { MdDelete, MdModeEdit } from "react-icons/md";

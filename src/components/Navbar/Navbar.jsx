@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Navbar.scss"; 
+import "./NavBar.scss"; 
 import assets from "../../assets";
 import { BsPersonCircle } from "react-icons/bs";
 import { RiArrowDropDownLine } from "react-icons/ri";

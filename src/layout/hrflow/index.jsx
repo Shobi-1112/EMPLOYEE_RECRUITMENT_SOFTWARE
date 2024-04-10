@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import "./Hrlayout.scss";
-import Navbar from "../../components/Navbar/Navbar";
+import Navbar from "../../components/NavBar/Navbar";
 const HrLayout = () => {
   const navigate = useNavigate();
 

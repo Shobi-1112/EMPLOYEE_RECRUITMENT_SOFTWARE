@@ -1,7 +1,7 @@
 import React from "react";
-import "/home/divum/hiring_platform/hiring-platform-frontend/src/components/ResumeUpload.scss";
+import "../ResumeUpload/ResumeUpload.scss";
 import { useDropzone } from 'react-dropzone';
-import UploadFileIcon from '@mui/icons-material/UploadFile';
+import { AiOutlineUpload } from 'react-icons/ai'; 
 
 function ResumeUpload() {
     const currentYear = new Date().getFullYear();
@@ -34,7 +34,7 @@ function ResumeUpload() {
                 <p>UPLOAD RESUME:</p>
                 <div {...getRootProps()} className="upload-container">
                     <input {...getInputProps()} />
-                    <UploadFileIcon className="upload-icon"/>
+                    <AiOutlineUpload className="upload-icon"/> 
                     <p>Drag & drop or click here to select a PDF file</p>
                 </div>
             </div>
