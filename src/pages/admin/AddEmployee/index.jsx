@@ -25,8 +25,8 @@ const AddEmployee = () => {
   const [type, setType] = useState("Employee");
   const [techStack, setTechStack] = useState("");
   const [yearOfExp, setYearOfExp] = useState("");
-  const [employeeType, setEmployeeType] = useState("Personal HR");
-
+  const [employeeType, setEmployeeType] = useState("PERSONAL_HR");
+  
   const handleEdit = (employee) => {
     setSelectedEmployee(employee);
     setEmpId(employee.employeeId);
@@ -42,13 +42,17 @@ const AddEmployee = () => {
 
   const handleDelete = async (employee) => {
     try {
-      await axios.delete(`http://192.168.1.20:8081api/v1/employee/${employee.employeeId}`,
-      {
-        headers:{
-          'Authorization':`${sessionStorage.getItem("token")}`
+      await axios.delete(
+        `http://192.168.1.20:8081api/v1/employee/${employee.employeeId}`,
+        {
+          headers: {
+            Authorization: `${sessionStorage.getItem("token")}`,
+          },
         }
-      });
-      const updatedData = data.filter((emp) => emp.employeeId !== employee.employeeId);
+      );
+      const updatedData = data.filter(
+        (emp) => emp.employeeId !== employee.employeeId
+      );
       setData(updatedData);
       console.log(updatedData);
       toast.success("Employee deleted successfully.");
@@ -72,30 +76,30 @@ const AddEmployee = () => {
       alert("Invalid email address.");
       return;
     }
-  
+
     const newEmployee = {
       employeeId: parseInt(empId),
       email: emailId,
       password: password || "password",
       firstName: firstName,
       lastName: lastName,
-      role: type,
-      yearsOfExperience: yearOfExp,
+      yearsOfExperience: parseInt(yearOfExp),
       employeeType: employeeType,
       stack: techStack,
     };
-  
+
     try {
       const response = await axios.post(
         `http://192.168.1.20:8081/api/v1/employee`,
-        newEmployee,{
-          headers:{
-            'Authorization':`${sessionStorage.getItem("token")}`
-          }
+        newEmployee,
+        {
+          headers: {
+            Authorization: `${sessionStorage.getItem("token")}`,
+          },
         }
       );
       console.log("Employee added successfully:", response.data);
-  
+
       if (selectedEmployee) {
         const updatedData = data.map((emp) =>
           emp.employeeId === response.data.employeeId ? response.data : emp
@@ -104,13 +108,13 @@ const AddEmployee = () => {
       } else {
         setData([...data, response.data]);
       }
-  
+
       setEmpId("");
       setFirstName("");
       setLastName("");
       setEmailId("");
       setpassword("");
-      setType("Employee");
+      setType("PERSONAL_HR");
       setTechStack("");
       setYearOfExp("");
       setEditPopupOpen(false);
@@ -119,16 +123,16 @@ const AddEmployee = () => {
       toast.error("Error adding employee. Please try again.");
     }
   };
-  
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
           "http://192.168.1.20:8081/api/v1/employee",
           {
-            headers:{
-              'Authorization':`${sessionStorage.getItem("token")}`
-            }
+            headers: {
+              Authorization: `${sessionStorage.getItem("token")}`,
+            },
           }
         );
         setData(response?.data.object.content);
@@ -140,7 +144,8 @@ const AddEmployee = () => {
   }, []);
 
   const popupHeader = "Add New Employee";
-  const popupBody = () => {
+  const popUpbody = () => {
+    // return;
     return (
       <div className="popup_inner">
         <label>Employee ID</label>
@@ -179,9 +184,17 @@ const AddEmployee = () => {
           value={yearOfExp}
           onChange={(e) => setYearOfExp(e.target.value)}
         />
-        <div className="EmployeeType">
+       
+        <label>Password</label>
+        <input
+          type="text"
+          value={yearOfExp}
+          onChange={(e) => setpassword(e.target.value)}
+        />
+        {/* <div className="EmployeeType">
           <label>Employee Type:</label>
-          {employeeTypeOptions.map((typeOption, index) => (
+          {console.log("employeeTypeOptions",employeeTypeOptions)} */}
+          {/* {employeeTypeOptions.map((typeOption, index) => (
             <div key={index} className="AddEmployeeTypeInner">
               <input
                 type="radio"
@@ -191,8 +204,8 @@ const AddEmployee = () => {
               />
               <label>{typeOption}</label>
             </div>
-          ))}
-        </div>
+          ))} */}
+        {/* </div> */}
         <div className="AddEmployeeType">
           <label>Type:</label>
           {employeeTypes.map((typeOption, index) => (
@@ -209,8 +222,8 @@ const AddEmployee = () => {
         </div>
         <Button
           className="AddEmployeeSaveBtn"
-          text={selectedEmployee ? "Update" : "Save"}
-          onClick={selectedEmployee ? handleSaveEmployee : handleAddEmployee}
+          text="Save"
+          onClick={handleSaveEmployee}
         />
         <Button
           className="AddEmployeeCancelBtn"
@@ -221,6 +234,42 @@ const AddEmployee = () => {
     );
   };
 
+  
+
+  // const popUpbody = () => {
+  //   return (
+  //     <>
+  //       <input
+  //         className="edit-testcase-popup"
+  //         type="text"
+  //         placeholder="Input"
+  //         value={input}
+  //         onChange={(e) => setInput(e.target.value)}
+  //       />
+  //       <input
+  //         className="edit-testcase-popup"
+  //         type="text"
+  //         placeholder="Output"
+  //         value={output}
+  //         onChange={(e) => setOutput(e.target.value)}
+  //       />
+  //       <div className="TestcaseType">
+  //         <label>Type:</label>
+  //         {/* {TestCasesOptions.map((typeOption, index) => (
+  //           <div key={index} className="TestCaseTypeInner">
+  //             <input
+  //               type="radio"
+  //               value={typeOption}
+  //               checked={type === typeOption}
+  //               onChange={() => setType(typeOption)}
+  //             />
+  //             <label>{typeOption}</label>
+  //           </div>
+  //         ))} */}
+  //       </div>
+  //     </>
+  //   );
+  // };
   return (
     <div className="AddEmployee">
       <Switching Arrayofvalue={["Employee Table"]} />
@@ -239,30 +288,25 @@ const AddEmployee = () => {
         />
       </div>
       <div className="addEmployeeTableContainer">
-      {data.length === 0 ? (
-        <p>No data available</p>
-      ) : 
-      (
-        <Table
-          data={data}
-          isDeletable={true}
-          isEditable={true}
-          onDelete={handleDelete}
-          onEdit={handleEdit}
-        />
-      )
-      }
-    </div>
-
+        {data.length === 0 ? (
+          <p>No data available</p>
+        ) : (
+          <Table
+            data={data}
+            isDeletable={true}
+            isEditable={true}
+            onDelete={handleDelete}
+            onEdit={handleEdit}
+          />
+        )}
+      </div>
 
       <Popup
         trigger={isEditPopupOpen}
         heading={popupHeader}
-        body={popupBody()}
+        body = {popUpbody()}
         setTrigger={setEditPopupOpen}
-      >
-        <div className="AddEmployeepopup"></div>
-      </Popup>
+      ></Popup>
     </div>
   );
 };

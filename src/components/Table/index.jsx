@@ -5,7 +5,7 @@ import Button from "../Button";
 import { MdDelete, MdModeEdit } from "react-icons/md";
 import Popup from "../Popup";
 import PieChart from "../Piechart/index";
-import { IoMdDownload } from "react-icons/io";
+import { IoMdDownload, IoEyeSharp } from "react-icons/io"; // Import IoEyeSharp
 import { useNavigate } from "react-router";
 
 const Table = ({
@@ -19,7 +19,7 @@ const Table = ({
   onView,
   onReschedule,
   onFeedback,
-  onFeedbackClick,
+  isViewbtn ,
   onStatus,
   currentData
 }) => {
@@ -228,11 +228,11 @@ const Table = ({
                     />
                   </td>
                 )}
-                {!isEditable && !isDeletable && isViewbtn && (
+                {!isEditable && !isDeletable && isViewbtn && ( 
                   <td>
                     <div className="viewButton-wrapper">
                       <Button
-                        icon={<IoEyeSharp />}
+                        // icon={<IoEyeSharp />} 
                         text={"View"}
                         className="viewButtonIcon"
                         onClick={() => onView(data, rowIndex)}
@@ -253,7 +253,7 @@ const Table = ({
     <div className='TableStyle'>
       {DynamicTable(currentData, isEditable, isDeletable, onEdit, onDelete)}
 
-      <div trigger={showPopup} setTrigger={closePopup} data={selectedRow}>
+      <Popup trigger={showPopup} setTrigger={closePopup} data={selectedRow}>
         <div>
           <div className='PopupContent'>
             <ul>
@@ -265,32 +265,16 @@ const Table = ({
             </ul>
           </div>
         </div>
-      </div>
+      </Popup>
+      {data && (
+        <Pagination
+          totalItems={data.length}
+          itemsPerPage={itemsPerPage}
+          onPageChange={handlePageChange}
+        />
+      )}
     </div>
   );
-  // return (
-  //   <div className="TableStyle">
-  //     {DynamicTable()}
-
-  //     <Popup
-  //       trigger={showPopup}
-  //       setTrigger={closePopup}
-  //       data={selectedRow}
-  //       body={values()}
-  //     />
-  //     {data && (
-  //       <Pagination
-  //         totalItems={data.length}
-  //         itemsPerPage={itemsPerPage}
-  //         onPageChange={handlePageChange}
-  //       />
-  //     )}
-  //   </div>
-  // )
-
 };
-
-
-
 
 export default Table;

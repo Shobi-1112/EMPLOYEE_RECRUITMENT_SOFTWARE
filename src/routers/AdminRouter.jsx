@@ -42,7 +42,7 @@ const AdminRouter = () => {
   return (
     <Routes>
       <Route path="/admin" element={<Layout />}>
-        <Route path="home" element={<Home />} />
+        <Route path="home/:id" element={<Home />} />
         <Route path="createcontest" element={<CreateContest />} />
         <Route path="roundFilterdetails" element={<RoundFilerDetails />} />
         <Route path="addQuestion/addQuestionSetup/:type" element={<AddQuestionSetup />} />

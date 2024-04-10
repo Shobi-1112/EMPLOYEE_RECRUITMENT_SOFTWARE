@@ -31,5 +31,5 @@ export const initialData = [
   },
 ];
 
-export const employeeTypes = ["Employee", "Manager"];
+export const employeeTypes = ["TECHNICAL_HR", "PERSONAL_HR"];
 export const addEmployeeStructure = ["Emp ID", "Employee Name", "Email Id"];
